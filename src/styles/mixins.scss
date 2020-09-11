@@ -1,0 +1,49 @@
+@mixin color($titulo, $color){
+    .bg-#{$titulo}{
+        background-color: $color !important;
+    }
+
+    .color-#{$titulo}{
+        color: $color !important;
+    }
+
+    .border-#{$titulo}{
+        border-color: $color !important;
+    }
+}
+
+@mixin padding($padding, $name) {
+    .pl-#{$name}{
+        padding-left: #{$padding + 'rem'};
+    }
+    .pr-#{$name}{
+        padding-right: #{$padding + 'rem'};
+    }
+    .pt-#{$name}{
+        padding-top: #{$padding + 'rem'};
+    }
+    .pb-#{$name}{
+        padding-bottom: #{$padding + 'rem'};
+    }
+    .p-#{$name}{
+        padding: #{$padding + 'rem'};
+    }
+}
+
+@mixin margin($margin, $name) {
+    .ml-#{$name}{
+        margin-left: #{$margin + 'rem'};
+    }
+    .mr-#{$name}{
+        margin-right: #{$margin + 'rem'};
+    }
+    .mt-#{$name}{
+        margin-top: #{$margin + 'rem'};
+    }
+    .mb-#{$name}{
+        margin-bottom: #{$margin + 'rem'};
+    }
+    .m-#{$name}{
+        margin: #{$margin + 'rem'};
+    }
+}

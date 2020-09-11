@@ -1,0 +1,50 @@
+.row {
+    display: flex;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.jc-center {
+    justify-content: center;
+}
+
+.jc-space-betwen {
+    justify-content: space-between;
+}
+
+.jc-space-around {
+    justify-content: space-around;
+}
+
+.jc-space-evenly {
+    justify-content: space-evenly;
+}
+
+.ai-center {
+    align-items: center;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.w-40 {
+    width: 40%;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+$i: 0;
+$n: 0;
+@while $i <= 5 {
+    @include padding($i, $n);
+    @include margin($i, $n);
+    $i: $i + 0.5;
+    $n: $n + 1;
+}
+

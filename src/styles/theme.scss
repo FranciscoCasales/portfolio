@@ -1,0 +1,10 @@
+@include color('primary', $primary);
+@include color('secundary', $secundary);
+@include color('white', $white);
+
+body {
+    font-family: Lato, Helvetica, sans-serif;
+    margin: 0;
+    overflow: hidden;
+    background-color: $white;
+}

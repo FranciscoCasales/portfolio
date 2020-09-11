@@ -1,0 +1,84 @@
+@import 'src/styles/variables.scss';
+
+.nav_bar-wrapper {
+    position: relative;
+    z-index: 10;
+
+    ul {
+        position: relative;
+    }
+}
+
+.nav-bar {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    transition: all 0.3s ease-out 0s;
+}
+
+
+.link-decorator {
+    span {
+        width: 0;
+        height: 2px;
+        background-color: $white;
+        position: relative;
+        left: 0;
+        bottom: 0;
+        border-radius: 50px;
+        transition: all 0.3s ease-out 0s;
+    }
+    span::before {
+        position: absolute;
+        content: '';
+        width: 0;
+        height: 2px;
+        background-color: $white;
+        left: 110%;
+    }
+    span::after {
+        position: absolute;
+        content: '';
+        width: 0;
+        height: 2px;
+        background-color: $white;
+        left: 140%;
+    }
+    
+    &:hover {
+        span {
+            width: 60%;
+        }
+        span::before {
+            width: 20%;
+        }
+        span::after {
+            width: 15%;
+        }
+    }
+
+}
+
+.selected-route + span {
+    width: 60% !important;
+    &::before {
+        width: 20% !important;
+    }
+    &::after {
+        width: 15% !important;
+    }
+}
+
+.background-shape {
+    position: absolute;
+    width: 64vw;
+    height: 4rem;
+    background-color: #B30000;
+    top: 0;
+    left: 45vw;
+    transform: skew(20deg);
+    border-bottom-left-radius: 30px;
+}
