@@ -70,6 +70,15 @@ a {
     &::after {
         width: 15% !important;
     }
+    &.red {
+        background-color: $secundary;
+        &::before {
+            background-color: $secundary;
+        }
+        &::after {
+            background-color: $secundary;
+        }
+    }
 }
 
 .background-shape {
