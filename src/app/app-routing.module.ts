@@ -4,6 +4,11 @@ import { LayoutComponent } from '@layout/layout.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
+  {
     component: LayoutComponent,
     path: '',
     children: [
@@ -20,7 +25,11 @@ const routes: Routes = [
         loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule)
       },
     ]
-  }
+  },
+  { 
+    path: '**',
+    redirectTo: 'home'
+  },
 ];
 
 @NgModule({
