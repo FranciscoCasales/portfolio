@@ -1,9 +1,11 @@
+@import 'src/styles/variables.scss';
+
 .background-shape {
     position: absolute;
     height: 120vh;
-    width: 64vw;
-    background-color: #B30000;
-    top: -10vh;
+    width: 100vw;
+    background-color: $secundary;
+    top: -15vh;
     left: 50vw;
     transform: skew(20deg);
 }

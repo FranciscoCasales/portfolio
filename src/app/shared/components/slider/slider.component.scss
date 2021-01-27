@@ -1,0 +1,48 @@
+@import 'src/styles/variables.scss';
+
+.slider-wrapper {
+  width: 100%;
+  height: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.slider-bar {
+  width: 100%;
+  height: 70%;
+  background-color: $light-grey;
+  border-radius: 6px;
+}
+
+.slider-bar-filled {
+  position: absolute;
+  max-width: 100%;
+  height: 80%;
+  background-color: $secundary;
+  border-radius: 10px 0 0 10px;
+  left: 0.5%;
+  width: 0;
+  transition: width 2s;
+}
+
+.percentage-indicator {
+  position: absolute;
+  height: 100%;
+  width: 6px;
+  background-color: $white;
+  border: 3px solid $secundary;
+  left: 0;
+  transition: left 2s;
+}
+
+.title-label {
+  position: absolute;
+  top: -46px;
+  font-weight: bold;
+  font-style: italic;
+  font-size: larger;
+  left: 8px;
+}

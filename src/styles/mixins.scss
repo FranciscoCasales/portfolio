@@ -47,3 +47,30 @@
         margin: #{$margin + 'rem'};
     }
 }
+
+@mixin z-index($name) {
+    .z-index-#{$name}{
+        z-index: #{$name * 10};
+    }
+}
+
+@mixin width($percentage) {
+    .w-#{$percentage}{
+        width: #{$percentage + '% !important'};
+    }
+}
+
+@mixin position($position) {
+    .left-#{$position}{
+        left: #{$position + '.5% !important'};
+    }
+    .right-#{$position}{
+        right: #{$position + '.5%'};
+    }
+    .top-#{$position}{
+        top: #{$position + '.5%'};
+    }
+    .bottom-#{$position}{
+        bottom: #{$position + '.5%'};
+    }
+}

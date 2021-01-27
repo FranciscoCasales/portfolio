@@ -1,0 +1,7 @@
+<div class="slider-wrapper">
+  <p class="title-label"> {{ skill ? (skill | titlecase) + ' /' : '' }} {{ percentage <= skillLevel.BASIC ? (skillLevel[skillLevel.BASIC] | titlecase) :
+    percentage <= skillLevel.MEDIUM ? (skillLevel[skillLevel.MEDIUM] | titlecase) : (skillLevel[skillLevel.ADVANCED] | titlecase) }} </p>
+  <div class="slider-bar"></div>
+  <div class="slider-bar-filled" [class]="!!percentage ? clazz : ''"></div>
+  <div class="percentage-indicator" [class]="!!percentage ? clazzIndicator : ''"></div>
+</div>

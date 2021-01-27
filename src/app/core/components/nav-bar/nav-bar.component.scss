@@ -23,40 +23,49 @@ a {
 .link-decorator {
     span {
         width: 0;
-        height: 2px;
-        background-color: $white;
+        height: 0;
+        background-color: $secundary;
         position: relative;
         left: 0;
         bottom: 0;
         border-radius: 50px;
         transition: all 0.3s ease-out 0s;
-    }
-    span::before {
-        position: absolute;
-        content: '';
-        width: 0;
-        height: 2px;
-        background-color: $white;
-        left: 110%;
-    }
-    span::after {
-        position: absolute;
-        content: '';
-        width: 0;
-        height: 2px;
-        background-color: $white;
-        left: 140%;
+        &.white {
+            background-color: $white;
+            &::before, &::after {
+                background-color: $white;
+            }
+        }
+        &::before {
+            position: absolute;
+            content: '';
+            width: 0;
+            height: 0;
+            background-color: $secundary;
+            left: 110%;
+        }
+        &::after {
+            position: absolute;
+            content: '';
+            width: 0;
+            height: 0;
+            background-color: $secundary;
+            left: 140%;
+        }
     }
     
     &:hover {
         span {
             width: 60%;
+            height: 2px
         }
         span::before {
             width: 20%;
+            height: 2px;
         }
         span::after {
             width: 15%;
+            height: 2px;
         }
     }
 
@@ -64,10 +73,13 @@ a {
 
 .selected-route + span {
     width: 60% !important;
+    height: 2px !important;
     &::before {
+        height: 2px !important;
         width: 20% !important;
     }
     &::after {
+        height: 2px !important;
         width: 15% !important;
     }
     &.red {
@@ -85,9 +97,15 @@ a {
     position: absolute;
     width: 64vw;
     height: 4rem;
-    background-color: #B30000;
+    background-color: $secundary;
     top: 0;
     left: 45vw;
     transform: skew(20deg);
     border-bottom-left-radius: 30px;
+}
+
+.nav-bar-sepparator {
+    height: 2px;
+    background-color: $secundary;
+    border-radius: 100%;
 }

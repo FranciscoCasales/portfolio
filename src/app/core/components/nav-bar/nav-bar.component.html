@@ -4,15 +4,18 @@
     <ul class="row m-0 nav-bar f-bold">
         <li class="pl-3 col link-decorator">
             <a [routerLink]="['/home']" routerLinkActive="color-white selected-route">Home</a>
-            <span></span>
+            <span [ngClass]="{'white': isHome}"></span>
         </li>
         <li class="pl-3 col link-decorator">
             <a [routerLink]="['/about']" routerLinkActive="color-secundary selected-route">About</a>
-            <span class="red"></span>
+            <span class="red" [ngClass]="{'white': isHome}"></span>
         </li>
         <li class="pl-3 col link-decorator">
             <a [routerLink]="['/portfolio']" routerLinkActive="color-secundary selected-route">Portfolio</a>
-            <span class="red"></span>
+            <span class="red" [ngClass]="{'white': isHome}"></span>
         </li>
     </ul>
 </section>
+<div class="row jc-center" *ngIf="!isHome">
+    <div class="w-90 nav-bar-sepparator"></div>
+</div>

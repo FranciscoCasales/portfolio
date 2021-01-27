@@ -14,19 +14,22 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+        loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
+        data: { animationState: 'Home' }
       },
       {
         path: 'about',
-        loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
+        loadChildren: () => import('./about/about.module').then(m => m.AboutModule),
+        data: { animationState: 'About' }
       },
       {
         path: 'portfolio',
-        loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule)
+        loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule),
+        data: { animationState: 'Portfolio' }
       },
     ]
   },
-  { 
+  {
     path: '**',
     redirectTo: 'home'
   },

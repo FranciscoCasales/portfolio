@@ -1,0 +1,23 @@
+@import 'src/styles/variables.scss';
+
+.about-wrapper {
+  height: 100%;
+}
+
+.section-height {
+  height: 84vh;
+}
+
+.skills-image {
+  width: 40vw;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 10px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background: $secundary;
+  border-radius: 6px;
+}
