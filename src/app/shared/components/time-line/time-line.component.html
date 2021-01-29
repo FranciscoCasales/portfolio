@@ -1,0 +1,18 @@
+<section class="time-line-wrapper w-100 col overflow-y scroll-theme">
+  <ng-container *ngFor="let elemnt of timeLineProperties; index as i">
+    <div class="time-line-element row">
+      <div class="time-line-block row jc-center ai-center p-3 overflow-hiden">
+        <p class="overflow-hiden m-0 h-auto">{{ elemnt.description }}</p>
+      </div>
+      <div class="time-line-step row jc-center ai-center p-relative">
+        <div class="step-indicator p-absolute row ai-center jc-center">{{ i + 1 }}</div>
+      </div>
+      <div class="step-info col jc-center">
+        <h3 class="job">{{ elemnt.job }}</h3>
+        <p class="company">{{ elemnt.company }}</p>
+        <span class="period">{{ elemnt.period }}</span>
+      </div>
+    </div>
+  </ng-container>
+  <div class="central-line" [ngStyle]="{'height': height}"></div>
+</section>

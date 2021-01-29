@@ -1,0 +1,78 @@
+@import 'src/styles/variables.scss';
+
+.time-line-wrapper {
+  position: relative;
+  max-height: 85vh;
+
+  div:nth-child(even) {
+    flex-direction: row-reverse;
+
+    div:nth-child(3) {
+      align-items: flex-end;
+    }
+
+  }
+
+}
+
+.central-line {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 2px;
+  background-color: $secundary;
+  left: 49%;
+}
+
+.time-line-element {
+  z-index: 2;
+  width: 98%;
+  height: 244px;
+
+  &:hover {
+    div:first-child {
+      background-color: $secundary;
+      color: $white;
+    }
+  }
+
+}
+
+.time-line-block {
+  width: 44%;
+  height: 98%;
+  margin: 2px;
+  box-shadow: 0px 0px 10px 0px rgba(196, 196, 196, 0.3);
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.time-line-step {
+  margin-right: 2%;
+  margin-left: 2%;
+  width: 8%;
+  height: 100%;
+  box-sizing: border-box;
+} 
+
+.step-indicator {
+  width: 70px;
+  height: 70px;
+  background-color: $white;
+  border: 2px solid $secundary;
+  border-radius: 50%;
+  color: $secundary;
+  font-size: large;
+  font-weight: bold;
+}
+
+.step-info {
+  width: 44%;
+  height: 100%;
+  h3 {
+    margin: 0;
+  }
+  p {
+    color: $secundary;
+  }
+}

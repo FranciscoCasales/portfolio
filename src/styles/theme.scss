@@ -8,3 +8,13 @@ body {
     overflow: hidden;
     background-color: $white;
 }
+
+html::-webkit-scrollbar, .scroll-theme::-webkit-scrollbar {
+    width: 8px;
+    height: 10px;
+}
+
+html::-webkit-scrollbar-thumb, .scroll-theme::-webkit-scrollbar-thumb {
+    background: $secundary;
+    border-radius: 6px;
+}

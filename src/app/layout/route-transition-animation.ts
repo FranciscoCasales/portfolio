@@ -14,18 +14,21 @@ export const routeTransitionAnimations = trigger('triggerName', [
     ]),
     // About
     query(':enter', [
-      style({ top: '100%', opacity: 0 })
+      style({
+        top: '100%',
+        opacity: 0
+      })
     ]),
     // Ambos
     query(':leave', animateChild()),
       group([
         // Home
         query(':leave', [
-          animate('500ms ease-out', style({ top: '-150%', opacity: 0 }))
+          animate('600ms ease', style({ top: '-150%', opacity: 0 }))
         ]),
         // About
         query(':enter', [
-          animate('500ms ease-out', style({ top: '0%', opacity: 1 }))
+          animate('600ms ease', style({ top: '0%', opacity: 1 }))
         ])
       ]),
       query(':enter', animateChild()),
@@ -42,17 +45,22 @@ export const routeTransitionAnimations = trigger('triggerName', [
     ]),
     // Home
     query(':enter', [
-      style({ top: '-150%', opacity: 0 })
+      style({
+        top: '-150%',
+        opacity: 0,
+        width: '100%',
+        height: '100%'
+      })
     ]),
     query(':leave', animateChild()),
       group([
         // About
         query(':leave', [
-          animate('500ms ease-out', style({ top: '100%', opacity: 0 }))
+          animate('600ms ease', style({ top: '100%', opacity: 0 }))
         ]),
         // Home
         query(':enter', [
-          animate('500ms ease-out', style({ top: '0%', opacity: 1 }))
+          animate('600ms ease', style({ top: '0%', opacity: 1 }))
         ])
       ]),
       query(':enter', animateChild()),

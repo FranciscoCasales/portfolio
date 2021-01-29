@@ -60,6 +60,12 @@
     }
 }
 
+@mixin height($percentage) {
+    .h-#{$percentage}{
+        height: #{$percentage + '% !important'};
+    }
+}
+
 @mixin position($position) {
     .left-#{$position}{
         left: #{$position + '.5% !important'};
