@@ -1,0 +1,26 @@
+<section class="side-bar-wrapper">
+  <div class="menu-wrapper" [ngClass]="{'clicked': isVisible}" (click)="showMenu()">
+    <div class="menu bar-1"></div>
+    <div class="menu bar-2"></div>
+    <div class="menu bar-2i"></div>
+    <div class="menu bar-3"></div>
+  </div>
+  <div class="menu-overlay" *ngIf="isVisible"></div>
+  <div class="menu-list row" [ngClass]="{'visible': isVisible}">
+    <span class="p-absolute name-top pl-2"><strong>Francisco</strong><strong class="color-secundary">Casales</strong></span>
+    <ul class="ml-1 mt-5 mr-1 f-bold w-100 p-0 pt-4">
+        <li class="col menu-element">
+            <a [routerLink]="['/home']" class="td-none p-1 menu-element-link" (click)="showMenu()" routerLinkActive="color-secundary selected-menu-element">Home</a>
+        </li>
+        <li class="col menu-element">
+            <a [routerLink]="['/about']" class="td-none p-1 menu-element-link" (click)="showMenu()" routerLinkActive="color-secundary selected-menu-element">About</a>
+        </li>
+        <li class="col menu-element">
+            <a [routerLink]="['/portfolio']" class="td-none p-1 menu-element-link" (click)="showMenu()" routerLinkActive="color-secundary selected-menu-element">Portfolio</a>
+        </li>
+    </ul>
+  </div>
+</section>
+<div class="row jc-center">
+  <div class="w-90 side-bar-sepparator"></div>
+</div>

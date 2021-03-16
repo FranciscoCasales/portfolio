@@ -1,10 +1,10 @@
 <section class="about-wrapper">
   <h2 class="ml-3">Skills</h2>
-  <div class="row h-100">
+  <div class="skills-wrapper h-100">
     <div class="w-40 section-height row ai-center">
       <img src="assets/images/skills_no_background.png" alt="skills" class="skills-image">
     </div>
-    <div class="col w-fill-available overflow-y scroll-theme section-height mb-5">
+    <div class="col w-fill-available overflow-y scroll-theme section-height skills mb-5">
       <div *ngFor="let skill of skills" class="row w-auto mt-1 ml-3 mr-3 mb-2">
         <div class="w-fill-available">
           <slider [percentage]=skill.percentage [skill]="skill.title"></slider>

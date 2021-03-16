@@ -1,4 +1,9 @@
-<nav-bar></nav-bar>
+<ng-container *ngIf="screenWidth >= 650; else sideBar">
+    <nav-bar></nav-bar>
+</ng-container>
 <div class="wrapper" [@triggerName]="prepareRoute(outlet)">
     <router-outlet #outlet="outlet"></router-outlet>
 </div>
+<ng-template #sideBar>
+    <side-bar></side-bar>
+</ng-template>

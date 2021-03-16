@@ -1,12 +1,13 @@
-@include color('primary', $primary);
-@include color('secundary', $secundary);
-@include color('white', $white);
+@import 'src/styles/variables.scss';
 
 body {
     font-family: Lato, Helvetica, sans-serif;
     margin: 0;
     overflow: hidden;
     background-color: $white;
+    @media only screen and($mobile-size) {
+        font-size: 12px;
+    }
 }
 
 html::-webkit-scrollbar, .scroll-theme::-webkit-scrollbar {

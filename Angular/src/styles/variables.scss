@@ -1,4 +1,9 @@
 $primary: black;
 $secundary: #B30000;
+$secondary-transparent: rgba(179, 0, 0, 0.8);
 $white: #F9F9F9;
+$grey: dimgray;
 $light-grey: rgba(100, 111, 135, 0.11);
+$transparent-black: rgba(0,0,0,0.5);
+$delayed-transition: cubic-bezier(1,.01,.66,-0.05);
+$mobile-size: 'max-width: 650px';

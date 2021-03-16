@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SliderComponent } from './components/slider/slider.component';
-import { DragDropDirective } from './directives/drag-drop.directive';
 import { TimeLineComponent } from './components/time-line/time-line.component';
 
 @NgModule({
-    declarations: [SliderComponent, DragDropDirective, TimeLineComponent],
-    exports: [SliderComponent, DragDropDirective, TimeLineComponent],
+    declarations: [SliderComponent, TimeLineComponent],
+    exports: [SliderComponent, TimeLineComponent],
     imports: [ CommonModule ]
 })
 export class SharedModule { }

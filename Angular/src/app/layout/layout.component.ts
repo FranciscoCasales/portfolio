@@ -11,8 +11,8 @@ import { fromEvent } from 'rxjs';
 })
 export class LayoutComponent implements OnInit {
 
-  private screenWidth: number;
-  private screenHeight: number;
+  public screenWidth: number;
+  public screenHeight: number;
 
   constructor() { }
 
@@ -25,12 +25,15 @@ export class LayoutComponent implements OnInit {
   }
 
   private getWindowSize() {
-    fromEvent(window, 'resize').subscribe(event => console.log(event));
+    fromEvent(window, 'resize').subscribe(this.updateWindowSize);
 
-    this.screenWidth = window.screen.width;
-    this.screenHeight = window.screen.height;
-    console.log('Screen width --------------->', this.screenWidth);
-    console.log('Screen height -------------->', this.screenHeight);
+    this.screenWidth = document.documentElement.clientWidth;
+    this.screenHeight = document.documentElement.clientHeight;
+  }
+
+  private updateWindowSize = (event) => {
+    this.screenWidth = event.target.document.documentElement.clientWidth;
+    this.screenHeight = event.target.document.documentElement.clientHeight;
   }
 
 }

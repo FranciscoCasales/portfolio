@@ -12,6 +12,7 @@ export class NavBarComponent {
   public isHome = false;
 
   constructor(private router: Router) {
+    this.validateInitialRoute();
     this.validateRoute();
   }
 
@@ -19,8 +20,12 @@ export class NavBarComponent {
     this.router.events.pipe(
       filter((e: Event) => e instanceof NavigationEnd)
     ).subscribe((e: NavigationEnd) => {
-      this.isHome = e.url.endsWith('home');
+      this.isHome = e.url.endsWith('home') || e.url.endsWith('/');
     });
+  }
+
+  private validateInitialRoute() {
+    this.isHome = this.router.url.endsWith('home');
   }
 
 }

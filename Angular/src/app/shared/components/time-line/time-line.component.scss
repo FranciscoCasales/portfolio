@@ -6,6 +6,9 @@
 
   div:nth-child(even) {
     flex-direction: row-reverse;
+    .period {
+      text-align: end;
+    }
 
     div:nth-child(3) {
       align-items: flex-end;
@@ -53,6 +56,10 @@
   width: 8%;
   height: 100%;
   box-sizing: border-box;
+  @media only screen and($mobile-size) {
+    margin-right: 4%;
+    margin-left: 4%;
+  }
 } 
 
 .step-indicator {
@@ -64,6 +71,10 @@
   color: $secundary;
   font-size: large;
   font-weight: bold;
+  @media only screen and($mobile-size) {
+    width: 35px;
+    height: 35px;
+  }
 }
 
 .step-info {

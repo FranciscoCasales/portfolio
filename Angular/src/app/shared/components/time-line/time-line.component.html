@@ -2,7 +2,7 @@
   <ng-container *ngFor="let elemnt of timeLineProperties; index as i">
     <div class="time-line-element row">
       <div class="time-line-block row jc-center ai-center p-3 overflow-hiden">
-        <p class="overflow-hiden m-0 h-auto">{{ elemnt.description }}</p>
+        <p class="overflow-hiden m-0 h-inherit">{{ elemnt.description }}</p>
       </div>
       <div class="time-line-step row jc-center ai-center p-relative">
         <div class="step-indicator p-absolute row ai-center jc-center">{{ i + 1 }}</div>

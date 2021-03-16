@@ -6,8 +6,24 @@
 
 .section-height {
   height: 84vh;
+  @media only screen and($mobile-size) {
+    height: 26vh;
+    &.skills {
+      height: 55vh;
+    }
+  }
 }
 
 .skills-image {
   width: 40vw;
+}
+
+.skills-wrapper {
+  display: flex;
+  flex-direction: row;
+
+  @media only screen and($mobile-size) {
+    flex-direction: column;
+    align-items: center;
+  }
 }

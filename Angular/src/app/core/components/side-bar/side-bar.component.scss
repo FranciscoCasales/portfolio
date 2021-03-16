@@ -1,0 +1,126 @@
+@import 'src/styles/variables.scss';
+
+.side-bar-wrapper {
+  height: 6vh;
+  position: relative;
+}
+
+.menu-wrapper {
+  width: 6vh;
+  height: 6vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  transition: left 0.5s;
+
+  &.clicked {
+    left: calc(50vw - 5vh);
+    .menu {
+      &.bar-1 {
+        transform: rotate(360deg);
+        opacity: 0;
+      }
+      &.bar-2 {
+        transform: rotate(315deg);
+      }
+      &.bar-2i {
+        transform: rotate(-315deg);
+      }
+      &.bar-3 {
+        transform: rotate(360deg);
+        opacity: 0;
+      }
+    }
+  }
+
+}
+
+.menu {
+  width: 4vw;
+  height: 1.5px;
+  background-color: $grey;
+  position: absolute;
+  z-index: 21;
+
+  &.bar-1 {
+    top: 36%;
+    transition: transform 1.3s, opacity 1.3s;
+  }
+
+  &.bar-2, &.bar-2i {
+    transition: transform 1.3s;
+  }
+
+  &.bar-3 {
+    bottom: 36%;
+    transition: transform 1.3s, opacity 1.3s;
+  }
+}
+
+.menu-list {
+  top: 0;
+  width: 50vw;
+  height: calc(100vh + 0rem);
+  background-color: $white;
+  position: absolute;
+  z-index: 20;
+  left: -50vw;
+  opacity: 0;
+  transition: left 0.5s, opacity 0.5s;
+
+  &.visible {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+.menu-overlay {
+  position: absolute;
+  width: 150vw;
+  height: 150vh;
+  background-color: $transparent-black;
+  z-index: 15;
+  top: 0;
+}
+
+.name-top {
+  top: 1vh;
+}
+
+.menu-element:hover {
+  background: $secondary-transparent !important;
+  color: $white !important;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.selected-menu-element {
+  background: $secondary-transparent !important;
+  color: $white !important;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.menu-element-link {
+  &:visited {
+    color: $primary;
+  }
+  &:hover {
+    color: primary;
+  }
+  &:link {
+    color: primary;
+  }
+  &:active {
+    color: primary;
+  }
+}
+
+.side-bar-sepparator {
+  height: 2px;
+  background-color: $secundary;
+  border-radius: 100%;
+}
+

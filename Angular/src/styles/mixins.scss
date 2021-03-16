@@ -1,3 +1,5 @@
+@import 'src/styles/variables.scss';
+
 @mixin color($titulo, $color){
     .bg-#{$titulo}{
         background-color: $color !important;
@@ -15,36 +17,66 @@
 @mixin padding($padding, $name) {
     .pl-#{$name}{
         padding-left: #{$padding + 'rem'};
+        @media only screen and ($mobile-size) {
+            padding-left: #{($padding / 2) + 'rem' };
+        }
     }
     .pr-#{$name}{
         padding-right: #{$padding + 'rem'};
+        @media only screen and ($mobile-size) {
+            padding-right: #{($padding / 2) + 'rem' };
+        }
     }
     .pt-#{$name}{
         padding-top: #{$padding + 'rem'};
+        @media only screen and ($mobile-size) {
+            padding-top: #{($padding / 2) + 'rem' };
+        }
     }
     .pb-#{$name}{
         padding-bottom: #{$padding + 'rem'};
+        @media only screen and ($mobile-size) {
+            padding-bottom: #{($padding / 2) + 'rem' };
+        }
     }
     .p-#{$name}{
         padding: #{$padding + 'rem'};
+        @media only screen and ($mobile-size) {
+            padding: #{($padding / 2) + 'rem' };
+        }
     }
 }
 
 @mixin margin($margin, $name) {
     .ml-#{$name}{
         margin-left: #{$margin + 'rem'};
+        @media only screen and ($mobile-size) {
+            margin-left: #{($margin / 2) + 'rem' };
+        }
     }
     .mr-#{$name}{
         margin-right: #{$margin + 'rem'};
+        @media only screen and ($mobile-size) {
+            margin-right: #{($margin / 2) + 'rem' };
+        }
     }
     .mt-#{$name}{
         margin-top: #{$margin + 'rem'};
+        @media only screen and ($mobile-size) {
+            margin-top: #{($margin / 2) + 'rem' };
+        }
     }
     .mb-#{$name}{
         margin-bottom: #{$margin + 'rem'};
+        @media only screen and ($mobile-size) {
+            margin-bottom: #{($margin / 2) + 'rem' };
+        }
     }
     .m-#{$name}{
         margin: #{$margin + 'rem'};
+        @media only screen and ($mobile-size) {
+            margin: #{($margin / 2) + 'rem' };
+        }
     }
 }
 
