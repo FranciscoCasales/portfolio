@@ -14,7 +14,6 @@
 }
 
 .social-media {
-    filter: grayscale(1) opacity(0.7);
     border: 1px solid rgba(0, 167, 142, 0.21);
     border-radius: 50px;
 }
@@ -23,5 +22,12 @@
     width: 40%;
     @media only screen and($mobile-size) {
         width: 72%;
+    }
+}
+
+.social-media-icon {
+    filter: grayscale(1) opacity(0.7);
+    &:hover {
+        filter: unset;
     }
 }

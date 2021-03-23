@@ -5,9 +5,10 @@
     <div class="menu bar-2i"></div>
     <div class="menu bar-3"></div>
   </div>
+  <p class="brand fz-18"><strong>Francisco</strong><strong class="color-secondary">Casales</strong></p>
   <div class="menu-overlay" *ngIf="isVisible"></div>
   <div class="menu-list row" [ngClass]="{'visible': isVisible}">
-    <span class="p-absolute name-top pl-2"><strong>Francisco</strong><strong class="color-secundary">Casales</strong></span>
+    <span class="p-absolute name-top pl-2 fz-18"><strong>Francisco</strong><strong class="color-secondary">Casales</strong></span>
     <ul class="ml-1 mt-5 mr-1 f-bold w-100 p-0 pt-4">
         <li class="col menu-element">
             <a [routerLink]="['/home']" class="td-none p-1 menu-element-link" (click)="showMenu()" routerLinkActive="color-secundary selected-menu-element">Home</a>

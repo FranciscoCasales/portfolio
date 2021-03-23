@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { NotFoundComponent } from '@core/components/not-found/not-found.component';
 import { LayoutComponent } from '@layout/layout.component';
 
 const routes: Routes = [
@@ -27,11 +28,15 @@ const routes: Routes = [
         loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule),
         data: { animationState: 'Portfolio' }
       },
+      {
+        path: 'not-found',
+        component: NotFoundComponent
+      }
     ]
   },
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: 'not-found'
   },
 ];
 

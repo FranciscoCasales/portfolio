@@ -4,13 +4,14 @@ import { NavBarComponent } from '@core/components/nav-bar/nav-bar.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const COMPONENTS = [
     LayoutComponent
 ]
 
 @NgModule({
-    declarations: [COMPONENTS, NavBarComponent, SideBarComponent],
+    declarations: [COMPONENTS, NavBarComponent, SideBarComponent, NotFoundComponent],
     imports: [
         RouterModule,
         CommonModule

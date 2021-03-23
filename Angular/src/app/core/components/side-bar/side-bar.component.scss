@@ -3,6 +3,8 @@
 .side-bar-wrapper {
   height: 6vh;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .menu-wrapper {
@@ -89,11 +91,15 @@
   top: 1vh;
 }
 
-.menu-element:hover {
-  background: $secondary-transparent !important;
-  color: $white !important;
-  border-radius: 5px;
-  text-decoration: none;
+.menu-element {
+  margin: 5px 0;
+
+  &:hover {
+    background: $secondary-transparent !important;
+    color: $white !important;
+    border-radius: 5px;
+    text-decoration: none;
+  }
 }
 
 .selected-menu-element {
@@ -122,5 +128,19 @@
   height: 2px;
   background-color: $secundary;
   border-radius: 100%;
+}
+
+.brand {
+  width: 90%;
+  text-align: center;
+  padding-right: 2rem;
+}
+
+.fz-18 {
+  font-size: 18px;
+}
+
+.color-secondary {
+  color: $secundary;
 }
 

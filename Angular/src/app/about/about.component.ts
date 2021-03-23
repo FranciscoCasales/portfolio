@@ -20,10 +20,11 @@ export class AboutComponent implements OnInit {
     this.skills = [
       this.buildSkill('Angular', 95),
       this.buildSkill('Java', 90),
-      this.buildSkill('SpringBoot', 70),
+      this.buildSkill('SpringBoot', 80),
       this.buildSkill('git', 85),
       this.buildSkill('Typescript', 85),
-      this.buildSkill('NodeJS', 30),
+      this.buildSkill('JavaScript', 85),
+      this.buildSkill('NodeJS', 70),
       this.buildSkill('React', 70),
       this.buildSkill('Unity', 30),
       this.buildSkill('Mongodb', 85),
@@ -33,7 +34,7 @@ export class AboutComponent implements OnInit {
       this.buildSkill('Dialogflow', 70),
       this.buildSkill('Swift', 35),
       this.buildSkill('Docker', 50),
-      this.buildSkill('Terminal', 70)
+      this.buildSkill('Terminal', 75)
     ];
   }
 

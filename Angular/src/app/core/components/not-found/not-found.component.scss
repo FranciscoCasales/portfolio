@@ -1,0 +1,16 @@
+@import 'src/styles/variables.scss';
+
+.not-found {
+  font-size: 14rem;
+
+  @media only screen and($mobile-size) {
+    font-size: 7rem;
+  }
+}
+
+.not-found-img {
+  transform: scale(0.7);
+  @media only screen and($mobile-size) {
+    transform: scale(0.5);
+  }
+}
