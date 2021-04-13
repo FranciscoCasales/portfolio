@@ -22,12 +22,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .hasAuthority(ApplicationConstants.PUBLIC_ROLE)
                 .antMatchers(ApplicationConstants.COMMENTS_PATH)
                 .permitAll()
+                .antMatchers(HttpMethod.POST, "/experiences/experience/**")
+                .hasAuthority(ApplicationConstants.ADMIN_ROLE)
                 .anyRequest().authenticated();
     }
 
-//    @Override
-//    public void configure(WebSecurity web) throws Exception {
-//        web.ignoring()
-//                .antMatchers(HttpMethod.POST, "/users/auth");
-//    }
 }

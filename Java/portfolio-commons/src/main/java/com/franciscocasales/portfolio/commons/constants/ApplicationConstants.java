@@ -12,6 +12,7 @@ public class ApplicationConstants {
     public static final String PREFIX = "Bearer ";
     public static final String EMPTY_STRING = "";
     public static final String PUBLIC_ROLE = "public";
+    public static final String ADMIN_ROLE = "admin";
     public static final List<String> EXCLUDED_URIS = Collections.singletonList(
             "/users/auth"
     );
