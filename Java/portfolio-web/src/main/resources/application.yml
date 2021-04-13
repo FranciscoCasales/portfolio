@@ -1,0 +1,22 @@
+server:
+  port: ${pPort}
+
+spring:
+  data:
+    mongodb:
+      uri: ${pMongodbUri}
+  mail:
+    host: ${pEmailHost}
+    port: ${pEmailPort}
+    username: ${pEmailUsername}
+    password: ${pEmailPassword}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+          starttls:
+            enable: true
+            required: true

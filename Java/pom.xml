@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.franciscocasales.portfolio</groupId>
+	<artifactId>portfolio</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<name>portfolio</name>
+	<description>Backend project for my personal website</description>
+
+	<modules>
+        <module>portfolio-services</module>
+        <module>portfolio-web</module>
+        <module>portfolio-persistence</module>
+        <module>portfolio-model</module>
+        <module>portfolio-commons</module>
+    </modules>
+	
+    <packaging>pom</packaging>
+
+	<properties>
+		<java.version>11</java.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <snapshot.version>1.0-SNAPSHOT</snapshot.version>
+		<spring.version>2.3.9.RELEASE</spring.version>
+        <springfox.swagger.version>3.0.0</springfox.swagger.version>
+		<log4j.version>2.14.1</log4j.version>
+		<model.mapper.version>2.3.1</model.mapper.version>
+        <lombok.version>1.18.18</lombok.version>
+        <jwt.version>0.9.1</jwt.version>
+        <jaxb.version>2.3.1</jaxb.version>
+        <google.guava.version>30.1.1-jre</google.guava.version>
+        <!-- Sonar configuration -->
+        <!--suppress UnresolvedMavenProperty -->
+        <sonar.login>${pSonarToken}</sonar.login>
+        <sonar.projectKey>portfolio-general</sonar.projectKey>
+        <!--suppress UnresolvedMavenProperty -->
+        <sonar.host.url>${pSonarUrl}</sonar.host.url>
+        <sonar.java.binaries>target</sonar.java.binaries>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+            <!--Child dependencies-->
+            <dependency>
+                <groupId>com.franciscocasales.portfolio</groupId>
+                <artifactId>portfolio-commons</artifactId>
+                <version>${snapshot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.franciscocasales.portfolio</groupId>
+                <artifactId>portfolio-model</artifactId>
+                <version>${snapshot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.franciscocasales.portfolio</groupId>
+                <artifactId>portfolio-persistence</artifactId>
+                <version>${snapshot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.franciscocasales.portfolio</groupId>
+                <artifactId>portfolio-services</artifactId>
+                <version>${snapshot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.franciscocasales.portfolio</groupId>
+                <artifactId>portfolio-web</artifactId>
+                <version>${snapshot.version}</version>
+            </dependency>
+            <!--Dev dependencies-->
+			<dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${spring.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Finchley.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+			<dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox.swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox.swagger.version}</version>
+            </dependency>
+			<dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.rozidan</groupId>
+                <artifactId>modelmapper-spring-boot-starter</artifactId>
+                <version>${model.mapper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <scope>provided</scope>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.xml</groupId>
+                <artifactId>jaxb-api</artifactId>
+                <version>${jaxb.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${google.guava.version}</version>
+            </dependency>
+        </dependencies>
+	</dependencyManagement>
+
+</project>
