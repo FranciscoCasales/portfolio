@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 @CrossOrigin(allowedHeaders = "*", allowCredentials = "true", origins = "*")
 @RestController
@@ -32,6 +34,18 @@ public class ExperienceController {
         } catch (Exception e) {
             logger.error(e.getLocalizedMessage());
             return new ResponseEntity<>(e.getLocalizedMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping(value = "/experience", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ExperienceTO>> findAll(
+            @RequestParam(value = "language", required = false, defaultValue = "1") Short language) {
+        try {
+            List<ExperienceTO> experienceList = experienceService.findAll(language);
+            return new ResponseEntity<>(experienceList, HttpStatus.OK);
+        } catch (Exception e) {
+            logger.error(e.getLocalizedMessage());
+            return new ResponseEntity<>(new ArrayList<ExperienceTO>(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

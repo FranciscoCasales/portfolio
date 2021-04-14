@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Type;
+import java.util.List;
 
 @Service
 public class ExperienceServiceImpl implements ExperienceService {
@@ -25,6 +26,12 @@ public class ExperienceServiceImpl implements ExperienceService {
         Type experienceDOType = new TypeToken<ExperienceDO>() {}.getType();
         ExperienceDO experienceDO = modelMapper.map(experience, experienceDOType);
         return experienceRepository.create(experienceDO);
+    }
+
+    @Override
+    public List<ExperienceTO> findAll(Short language) {
+        Type experienceTOListType = new TypeToken<List<ExperienceTO>>() {}.getType();
+        return modelMapper.map(experienceRepository.findAll(language), experienceTOListType);
     }
 
 }

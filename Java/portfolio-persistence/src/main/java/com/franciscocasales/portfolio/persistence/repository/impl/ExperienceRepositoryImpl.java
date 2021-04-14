@@ -6,9 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.text.MessageFormat;
+import java.util.List;
 
 @Repository
 public class ExperienceRepositoryImpl implements ExperienceRepository {
@@ -25,4 +28,9 @@ public class ExperienceRepositoryImpl implements ExperienceRepository {
         return experience.getId().toString();
     }
 
+    @Override
+    public List<ExperienceDO> findAll(Short language) {
+        Query query = new Query(Criteria.where("language").is(language));
+        return mongoOperations.find(query, ExperienceDO.class);
+    }
 }
