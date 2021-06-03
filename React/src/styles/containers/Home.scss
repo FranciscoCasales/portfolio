@@ -1,0 +1,40 @@
+@import '../variables.scss';
+
+.Home {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.Home__content {
+  width: 45%;
+  margin: 1rem 5rem;
+  margin-bottom: 11rem;
+
+  @media only screen and ($mobile-width-landscape) and ($mobile-height-landscape) {
+    margin-bottom: 9rem;
+  }
+}
+
+.Home__shapeWrapper {
+  position: absolute;
+  width: 100%;
+  top: -100px;
+  height: 115vh;
+  overflow: hidden;
+}
+
+.Home__shape {
+  position: absolute;
+  background-color: var(--primary-color);
+  width: 122%;
+  height: 115vh;
+  left: 55%;
+  transform: skew(16deg);
+
+  @media only screen and ($mobile-width-portrait) and ($mobile-height-portrait) {
+    left: 65%;
+  }
+}

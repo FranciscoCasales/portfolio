@@ -1,0 +1,27 @@
+.Header {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  z-index: 1;
+  height: 55px;
+  --selection-color: var(--primary-color);
+
+  &.roteNotHome {
+    --selection-color: var(--primary-color);
+  }
+
+}
+
+.Header__brand {
+  margin: 1rem;
+  width: 30%;
+}
+
+.Header__shape {
+  position: absolute;
+  background-color: var(--primary-color);
+  width: 122%;
+  height: calc(100vh - 55px);
+  left: 45%;
+  transform: skew(16deg);
+}

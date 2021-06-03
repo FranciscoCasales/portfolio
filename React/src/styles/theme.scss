@@ -1,0 +1,28 @@
+:root {
+  --primary: #215968;
+  --primary-dark: #19434f;
+  --primary-darkest: #183341;
+  --primary-light: #266475;
+  --primary-transparent: rgba(33, 89, 104, 0.8);
+  --color-text: black;
+  --color-text-light: rgb(40, 40, 40);
+  --color-text-gray: dimgray;
+  --color-light: #f9f9f9;
+  --overlay: rgba(0, 0, 0, 0.5);
+  --box-shadow-card: 0 0 3px 0 rgb(0 0 0 / 40%);
+}
+
+.default-theme,
+.theme-default {
+  --primary-color: var(--primary);
+  --bg-color: var(--color-light);
+  --text-color: var(--color-text);
+  --icon-color: var(--primary-light);
+}
+
+.dark-mode {
+  --primary-color: var(--primary-dark);
+  --bg-color: var(--color-text-light);
+  --text-color: var(--color-light);
+  --icon-color: var(--primary-darkest);
+}

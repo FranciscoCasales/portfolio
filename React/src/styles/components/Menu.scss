@@ -1,0 +1,90 @@
+.Menu {
+  list-style: none;
+  margin: 0;
+  padding: 0 1.4rem;
+
+  li {
+    cursor: pointer;
+    position: relative;
+    margin: 0.5rem 0;
+    width: fit-content;
+
+    span {
+      transition: width 0.3s ease-out 0s;
+      width: 0;
+      height: 0;
+      background-color: var(--selection-color);
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      &::before {
+        content: '';
+        width: 0;
+        height: 0;
+        left: 140%;
+        bottom: 0;
+        background-color: var(--selection-color);
+        position: absolute;
+      }
+      &::after {
+        content: '';
+        width: 0;
+        height: 0;
+        left: 370%;
+        bottom: 0;
+        background-color: var(--selection-color);
+        position: absolute;
+      }
+    }
+
+    &:hover span {
+      width: 15%;
+      height: 2px;
+      &::before {
+        width: 200%;
+        height: 2px;
+      }
+      &::after {
+        width: 300%;
+        height: 2px;
+      }
+    }
+
+    &.selected {
+      span {
+        width: 15%;
+        height: 2px;
+        background-color: var(--selection-color);
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        &::before {
+          content: '';
+          width: 200%;
+          height: 2px;
+          left: 140%;
+          bottom: 0;
+          background-color: var(--selection-color);
+          position: absolute;
+        }
+        &::after {
+          content: '';
+          width: 300%;
+          height: 2px;
+          left: 370%;
+          bottom: 0;
+          background-color: var(--selection-color);
+          position: absolute;
+        }
+      }
+    }
+  }
+
+  &.desktop {
+    li {
+      float: left;
+      margin: 0 1rem;
+      width: inherit;
+    }
+  }
+}

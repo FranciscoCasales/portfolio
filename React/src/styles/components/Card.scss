@@ -1,0 +1,16 @@
+.Card {
+  display: flex;
+  box-shadow: var(--box-shadow-card);
+  align-items: center;
+  border-radius: 0.4rem;
+  width: 30%;
+  margin: 0 1rem 1rem 0;
+}
+
+.Card__image {
+  width: 3rem;
+}
+
+.Card__description {
+  margin-left: 0.5rem;
+}

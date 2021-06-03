@@ -1,0 +1,39 @@
+@import './variables.scss';
+@font-face {
+  font-family: 'Lato';
+  src: url('../assets/fonts/lato-regular.woff2') format('woff2'),
+    url('../assets/fonts/lato-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../assets/fonts/lato-700.woff2') format('woff2'),
+    url('../assets/fonts/lato-700.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+}
+
+html {
+  font-family: 'Lato';
+  font-size: 16px;
+
+  @media only screen and ($mobile-width-portrait) and ($mobile-height-portrait) {
+    font-size: 12px;
+  }
+  @media only screen and ($mobile-width-landscape) and ($mobile-height-landscape) {
+    font-size: 12px;
+  }
+}
+
+body {
+  margin: 0;
+}
+
+.overlay {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--overlay);
+}
