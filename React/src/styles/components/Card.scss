@@ -1,10 +1,20 @@
+@import '../variables.scss';
+
 .Card {
   display: flex;
   box-shadow: var(--box-shadow-card);
   align-items: center;
   border-radius: 0.4rem;
-  width: 30%;
+  width: 23%;
   margin: 0 1rem 1rem 0;
+
+  @media only screen and ($mobile-width-landscape) {
+    width: 30%;
+  }
+
+  @media only screen and ($mobile-width-portrait) {
+    width: 45%;
+  }
 }
 
 .Card__image {

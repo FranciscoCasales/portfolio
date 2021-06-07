@@ -1,6 +1,6 @@
 import React from 'react';
 import '@styles/components/Menu.scss';
-import { MenuModel } from '@models/menu-model';
+import { MenuModel } from '@models/menu.model';
 
 const Menu = ({ desktop = false }: MenuModel): JSX.Element => (
   <ul className={`Menu ${desktop && 'desktop'}`}>

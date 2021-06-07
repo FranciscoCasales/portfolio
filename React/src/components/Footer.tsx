@@ -1,5 +1,11 @@
 import React from 'react';
+import Brand from '@components/Brand';
+import '@styles/components/Footer.scss';
 
-const Footer = (): JSX.Element => <footer>FranciscoCasales 2021</footer>;
+const Footer = (): JSX.Element => (
+  <footer className="Footer">
+    <Brand />
+  </footer>
+);
 
 export default Footer;

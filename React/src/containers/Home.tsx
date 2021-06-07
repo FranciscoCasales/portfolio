@@ -1,6 +1,5 @@
 import React from 'react';
 import '@styles/containers/Home.scss';
-import SocialNetwork from '@components/SocialNetwork';
 
 const Home = (): JSX.Element => (
   <section className="Home">

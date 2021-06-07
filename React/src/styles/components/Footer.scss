@@ -1,0 +1,22 @@
+@import '../variables.scss';
+
+.Footer {
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  position: relative;
+  left: -5rem;
+  width: calc(100vw - 2rem);
+  padding-left: 2rem;
+
+  @media only screen and ($mobile-width-portrait) and ($mobile-height-portrait) {
+    left: -3.5rem;
+    width: calc(100vw - 2.5rem);
+    padding-left: 2.5rem;
+  }
+
+  .Brand .Brand__lastName {
+    color: white;
+    font-weight: normal;
+  }
+}

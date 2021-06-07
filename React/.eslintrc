@@ -17,6 +17,13 @@
   "plugins": ["prettier", "@typescript-eslint"],
   "rules": {
     "semi": "warn",
+    "react/jsx-props-no-spreading": [
+      0,
+      {
+      "html": "ignore",
+      "custom": "ignore"
+      }
+    ],
     "react/jsx-filename-extension": [
       1,
       {

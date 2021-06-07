@@ -1,4 +1,4 @@
-import { CardModel } from '@models/card-model';
+import { CardModel } from '@models/card.model';
 
 import babelIcon from '@images/frontend/babel.svg';
 import webpackIcon from '@images/frontend/webpack.svg';

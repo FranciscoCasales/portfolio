@@ -1,0 +1,62 @@
+@import '../variables.scss';
+
+.TimeLine {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  margin-right: 1rem;
+  padding: 1.5rem 0;
+}
+
+.TimeLine__element {
+  display: flex;
+  justify-content: inherit;
+  align-items: center;
+  font-size: 0.9rem;
+  margin: 1.2rem 0;
+  max-height: 50vh;
+  --time-line-color: var(--bg-color);
+  --time-line-text: var(--text-color);
+  
+  &:hover {
+    --time-line-color: var(--primary-color);
+    --time-line-text: var(--bg-color);
+  }
+  
+  @media only screen and ($mobile-width-portrait) and ($mobile-height-portrait),
+  only screen and ($mobile-width-landscape) and ($mobile-height-landscape) {
+    max-height: 90vh;
+  }
+
+}
+
+.TimeLine__centralLine {
+  width: 2px;
+  height: 100%;
+  background-color: var(--primary-color);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.TimeLine__stepIndicator {
+  width: 5rem;
+  height: 5rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  background-color: var(--time-line-color);
+  color: var(--time-line-text);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.5rem;
+
+  @media only screen and ($mobile-width-portrait) and ($mobile-height-portrait) {
+    height: 4rem;
+  }
+}

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CounterModel } from '@models/counter-model';
+import { CounterModel } from '@models/counter.model';
 
 const useCounter = (initialCount = 0): CounterModel => {
   const [counter, setCounter] = useState(initialCount);

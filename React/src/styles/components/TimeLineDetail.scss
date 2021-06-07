@@ -1,0 +1,22 @@
+.TimeLineDetail {
+  width: 44%;
+  border-radius: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem;
+
+  h3, p {
+    margin: 0.5rem 0;
+  }
+
+  &.right {
+    text-align: end;
+  }
+
+}
+
+.TimeLineDetail__company {
+  color: var(--primary-color);
+  font-weight: bold;
+}

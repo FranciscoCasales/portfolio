@@ -1,0 +1,9 @@
+@import '../variables.scss';
+
+.Layout {
+  padding-left: 5rem;
+
+  @media only screen and ($mobile-width-portrait) and ($mobile-height-portrait) {
+    padding-left: 3.5rem;
+  }
+}

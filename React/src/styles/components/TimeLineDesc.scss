@@ -1,0 +1,14 @@
+.TimeLineDesc {
+  width: 44%;
+  box-shadow: var(--box-shadow-card);
+  border-radius: 0.4rem;
+  height: fit-content;
+  overflow: auto;
+  background-color: var(--time-line-color);
+  color: var(--time-line-text);
+  padding: 0.5rem;
+
+  p {
+    margin: 0;
+  }
+}
