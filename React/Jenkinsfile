@@ -15,7 +15,9 @@ pipeline {
   stages {
 
     stage('Clean workspace') {
-      cleanWs()
+      steps {
+        cleanWs()
+      }
     }
     
     stage('Install dependencies') {
