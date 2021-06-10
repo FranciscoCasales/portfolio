@@ -25,26 +25,23 @@ pipeline {
       }
     }
 
-    stage('Clone the github pages project') {
-        
-      environment {
-        GITHUB_TOKEN = credentials('p-github')
-        GITHUB_USER = 'FranciscoCasales'
-      }
-      
+    stage('Clone the github pages project and update content') {
       steps {
         sh 'git clone https://github.com/FranciscoCasales/FranciscoCasales.github.io.git'
         sh 'rm -rf FranciscoCasales.github.io/*'
         sh 'cp -R React/dist/* FranciscoCasales.github.io/'
-        sh 'cd FranciscoCasales.github.io/ && git add .'
-        sh "cd FranciscoCasales.github.io/ && git commit -m \"[DEPLOY :rocket: ]: New portfolio version ${params.VERSION}\""
-        sh 'cd FranciscoCasales.github.io/ && git push https://$GITHUB_USER:$GITHUB_TOKEN@github.com/FranciscoCasales/FranciscoCasales.github.io.git'
       }
     }
 
-    stage('Clean workspace') {
+    stage('Deploy portafolio in github pages') {
+      environment {
+        GITHUB_TOKEN = credentials('p-github')
+        GITHUB_USER = 'FranciscoCasales'
+      }
       steps {
-        sh 'cd ../.. && rm -rf workspace/*'
+        sh 'cd FranciscoCasales.github.io/ && git add .'
+        sh "cd FranciscoCasales.github.io/ && git commit -m \"[DEPLOY :rocket: ]: New portfolio version ${params.VERSION}\""
+        sh 'cd FranciscoCasales.github.io/ && git push https://$GITHUB_USER:$GITHUB_TOKEN@github.com/FranciscoCasales/FranciscoCasales.github.io.git'
       }
     }
   }
