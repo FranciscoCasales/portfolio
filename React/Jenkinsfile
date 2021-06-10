@@ -11,6 +11,7 @@ pipeline {
   }
 
   stages {
+    
     stage('Install dependencies') {
       steps {
         sh 'cd React && npm i'
@@ -19,6 +20,13 @@ pipeline {
     stage('Build project') {
       steps {
         sh 'cd React && npm run build'
+      }
+    }
+
+    stage('Clone the github pages project') {
+      steps {
+        sh 'git clone https://github.com/FranciscoCasales/FranciscoCasales.github.io.git'
+        sh 'cd FranciscoCasales'
       }
     }
   }
