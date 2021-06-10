@@ -32,8 +32,15 @@ pipeline {
         sh 'cp -R React/dist/* FranciscoCasales.github.io/'
         sh 'cd FranciscoCasales.github.io/'
         sh 'git add .'
-        sh 'git commit -m "[DEPLOY :rocket: ]: New portfolio version ${params.VERSION}"'
+        sh "git commit -m \"[DEPLOY :rocket: ]: New portfolio version ${params.VERSION}\""
         sh 'git push origin master'
+      }
+    }
+
+    stage('Clean workspace') {
+      steps {
+        sh 'cd ../..'
+        sh 'rm -rf workspace/*'
       }
     }
   }
