@@ -13,12 +13,6 @@ pipeline {
     string(name: 'VERSION', defaultValue: '1.0.0', description: 'Deploy version')
   }
   stages {
-
-    stage('Clean workspace') {
-      steps {
-        cleanWs()
-      }
-    }
     
     stage('Install dependencies') {
       steps {
@@ -48,6 +42,12 @@ pipeline {
         sh 'cd FranciscoCasales.github.io/ && git add .'
         sh "cd FranciscoCasales.github.io/ && git commit -m \"[DEPLOY :rocket: ]: New portfolio version ${params.VERSION}\""
         sh 'cd FranciscoCasales.github.io/ && git push https://$GITHUB_USER:$GITHUB_TOKEN@github.com/FranciscoCasales/FranciscoCasales.github.io.git'
+      }
+    }
+
+    stage('Clean workspace') {
+      steps {
+        cleanWs()
       }
     }
   }
