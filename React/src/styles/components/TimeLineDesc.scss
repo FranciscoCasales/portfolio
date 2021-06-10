@@ -7,6 +7,14 @@
   background-color: var(--time-line-color);
   color: var(--time-line-text);
   padding: 0.5rem;
+  opacity: 0;
+  filter: blur(10px);
+  transition: filter ease 1s, opacity ease 1s;
+
+  &.intersected {
+    opacity: 1;
+    filter: blur(0);
+  }
 
   p {
     margin: 0;

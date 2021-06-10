@@ -1,27 +1,24 @@
+@import '../variables.scss';
+
 .Header {
   display: flex;
-  justify-content: space-around;
-  position: relative;
+  justify-content: space-between;
   z-index: 5;
-  height: 55px;
-  --selection-color: var(--primary-color);
+  height: 3.5rem;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  background: linear-gradient(70deg, rgba(255,255,255,1) 0%, rgba(33,89,104,1) 44%);
+  --selection-color: var(--text-color);
 
-  &.roteNotHome {
-    --selection-color: var(--primary-color);
+  @media only screen and ($mobile-width-portrait) and ($mobile-height-portrait) {
+    background: none;
   }
 
 }
 
-.Header__brand {
-  margin: 1rem;
-  width: 30%;
-}
-
-.Header__shape {
-  position: absolute;
-  background-color: var(--primary-color);
-  width: 122%;
-  height: calc(100vh - 55px);
-  left: 45%;
-  transform: skew(16deg);
+.Header .Brand {
+  margin: 0;
+  padding: 1rem;
+  padding-right: 20%;
 }

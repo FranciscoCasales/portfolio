@@ -22,6 +22,9 @@
       "@hooks/*": ["./src/hooks/*"],
       "@models/*": ["./src/models/*"],
       "@images/*": ["./src/assets/images/*"],
+      "@data/*": ["./src/assets/data/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@context/*": ["./src/context/*"],
     }
   }
 }

@@ -1,0 +1,25 @@
+pipeline {
+
+  agent any
+
+  tools {
+    nodejs 'node-14.17.0'
+  }
+
+  options {
+    timeout(time: 2, unit: 'MINUTES')
+  }
+
+  stages {
+    stage('Install dependencies') {
+      steps {
+        sh 'cd React && npm i'
+      }
+    }
+    stage('Build project') {
+      steps {
+        sh 'cd React && npm run build'
+      }
+    }
+  }
+}

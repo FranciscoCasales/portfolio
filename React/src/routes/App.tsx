@@ -3,15 +3,18 @@ import Home from '@containers/Home';
 import Layout from '@components/Layout';
 import Skills from '@containers/Skills';
 import Experience from '@containers/Experience';
+import { AppContextProvider } from '@context/AppContext';
 
 const App = (): JSX.Element => (
-  <Layout>
-    <>
-      <Home />
-      <Skills />
-      <Experience />
-    </>
-  </Layout>
+  <AppContextProvider>
+    <Layout>
+      <>
+        <Home />
+        <Skills />
+        <Experience />
+      </>
+    </Layout>
+  </AppContextProvider>
 );
 
 export default App;

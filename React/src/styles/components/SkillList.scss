@@ -1,4 +1,12 @@
 .SkillList {
   display: flex;
   flex-wrap: wrap;
+  filter: blur(10px);
+  opacity: 0;
+  transition: filter ease 1s, opacity ease 1s;
+
+  &.intersected {
+    opacity: 1;
+    filter: blur(0);
+  }
 }

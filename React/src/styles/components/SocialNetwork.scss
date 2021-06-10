@@ -15,14 +15,14 @@
   left: 0;
 
   @media only screen and ($mobile-width-portrait) and ($mobile-height-portrait) {
-    width: 2rem;
+    width: 2.1rem;
     top: 38vh;
     padding: 0.2rem;
     margin: 0.4rem;
   }
 
   @media only screen and ($mobile-width-landscape) and ($mobile-height-landscape) {
-    width: 2rem;
+    width: 2.1rem;
   }
 
 }
@@ -44,6 +44,9 @@ $social-networks: (
       background-repeat: round;
       transition: all ease 0.3s;
       margin: 1rem 0;
+      border: 0;
+      background-color: white;
+      cursor: pointer;
 
       @media only screen and ($mobile-width-portrait) and ($mobile-height-portrait),
         only screen and ($mobile-width-landscape) and ($mobile-height-landscape) {
@@ -59,8 +62,8 @@ $social-networks: (
         
         @media only screen and ($mobile-width-portrait) and ($mobile-height-portrait),
           only screen and ($mobile-width-landscape) and ($mobile-height-landscape) {
-          width: 2.8rem;
-          height: 2.8rem;
+          width: 2.2rem;
+          height: 2.2rem;
         }
       }
     }

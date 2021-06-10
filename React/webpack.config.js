@@ -15,7 +15,7 @@ module.exports = {
   },
   mode: 'production',
   resolve: {
-    extensions: ['.js', '.ts', '.tsx', '.svg', '.png'],
+    extensions: ['.js', '.ts', '.tsx', '.svg', '.png', '.pdf'],
     alias: {
       '@components': path.resolve(__dirname, 'src/components'),
       '@containers': path.resolve(__dirname, 'src/containers'),
@@ -25,6 +25,9 @@ module.exports = {
       '@hooks': path.resolve(__dirname, 'src/hooks'),
       '@models': path.resolve(__dirname, 'src/models'),
       '@images': path.resolve(__dirname, 'src/assets/images'),
+      '@data': path.resolve(__dirname, 'src/assets/data'),
+      '@constants': path.resolve(__dirname, 'src/constants'),
+      '@context': path.resolve(__dirname, 'src/context'),
     },
   },
   module: {
@@ -65,6 +68,13 @@ module.exports = {
       {
         test: /\.(png|svg)$/i,
         type: 'asset/resource',
+      },
+      {
+        test: /\.pdf$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/data/[hash][ext][query]',
+        },
       },
     ],
   },

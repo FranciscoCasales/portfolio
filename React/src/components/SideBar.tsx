@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react';
 import Brand from '@components/Brand';
 import '@styles/components/SideBar.scss';
@@ -9,7 +10,15 @@ const SideBar = (): JSX.Element => {
 
   return (
     <nav className={`SideBar ${menuShowState && 'open'}`}>
-      {menuShowState && <div className="overlay" />}
+      {menuShowState && (
+        <div
+          onClick={handleMenuClick}
+          onKeyPress={handleMenuClick}
+          role="button"
+          tabIndex={0}
+          className="overlay"
+        />
+      )}
       <div
         onClick={handleMenuClick}
         onKeyPress={handleMenuClick}
@@ -23,7 +32,7 @@ const SideBar = (): JSX.Element => {
       </div>
       <section className="SideBar__menu">
         {menuShowState ? <Brand /> : <div className="SideBar__space" />}
-        <Menu />
+        <Menu routeAction={setMenuShowState} />
       </section>
     </nav>
   );
