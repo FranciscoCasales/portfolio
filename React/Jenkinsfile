@@ -9,7 +9,9 @@ pipeline {
   options {
     timeout(time: 2, unit: 'MINUTES')
   }
-
+  parameters {
+    string(name: 'VERSION', defaultValue: '1.0.0', description: 'Deploy version')
+  }
   stages {
     
     stage('Install dependencies') {
@@ -26,7 +28,12 @@ pipeline {
     stage('Clone the github pages project') {
       steps {
         sh 'git clone https://github.com/FranciscoCasales/FranciscoCasales.github.io.git'
-        sh 'cd FranciscoCasales'
+        sh 'rm -rf FranciscoCasales.github.io/*'
+        sh 'cp -R React/dist/* FranciscoCasales.github.io/'
+        sh 'cd FranciscoCasales.github.io/'
+        sh 'git add .'
+        sh 'git commit -m "[DEPLOY :rocket: ]: New portfolio version ${params.VERSION}"'
+        sh 'git push origin master'
       }
     }
   }
