@@ -136,7 +136,7 @@ module.exports = {
           },
         },
         {
-          urlPattern: /^http:\/\/localhost:3006?\/?(index.html)$/i,
+          urlPattern: /^http:\/\/localhost:3006\/?(index\.html)?$/i,
           handler: 'NetworkFirst',
         },
         {

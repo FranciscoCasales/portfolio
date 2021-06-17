@@ -133,7 +133,7 @@ module.exports = {
           },
         },
         {
-          urlPattern: /^https:\/\/franciscocasales.github.io?\/?(index.html)$/,
+          urlPattern: /^https:\/\/franciscocasales.github.io\/?(index\.html)?$/,
           handler: 'NetworkFirst',
         },
         {
