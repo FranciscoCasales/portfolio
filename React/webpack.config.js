@@ -68,7 +68,7 @@ module.exports = {
       {
         test: /\.s?css$/i,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|svg)$/i,
@@ -89,13 +89,13 @@ module.exports = {
       filename: './index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: 'assets/[name].[contenthash].css',
+      filename: '[name].[contenthash].css',
     }),
     new DotEnv(),
     new CleanWebpackPlugin(),
     new WebpackPwaManifestPlugin({
-      name: 'CodeCasales | Portfolio',
-      short_name: 'CodeCasales 👻',
+      name: 'CodeCasales | Portfolio 👨🏽‍💻',
+      short_name: 'Code Casales 👨🏽‍💻',
       description: 'Portafolio personal, conoce a codecasales',
       background_color: '#215968',
       theme_color: '#215968',
@@ -118,6 +118,8 @@ module.exports = {
       ios: true,
     }),
     new GenerateSW({
+      exclude: [/index\.html$/],
+      maximumFileSizeToCacheInBytes: 1000 * 1000 * 5,
       runtimeCaching: [
         {
           urlPattern: /\.(png|jpg|jpeg|svg|pdf)$/,
@@ -131,14 +133,14 @@ module.exports = {
           },
         },
         {
-          urlPattern: /index\.html$/,
-          handler: 'StaleWhileRevalidate',
+          urlPattern: /^https:\/\/franciscocasales.github.io?\/?(index.html)$/,
+          handler: 'NetworkFirst',
         },
         {
-          urlPattern: /(main|manifest)\..*\.(js|json)$/,
+          urlPattern: /(main|manifest)\..*\.(js|json|css)$/,
           handler: 'CacheFirst',
           options: {
-            cacheName: 'core',
+            cacheName: 'app-core',
             expiration: {
               maxEntries: 6,
               maxAgeSeconds: 60 * 60 * 24 * 5,

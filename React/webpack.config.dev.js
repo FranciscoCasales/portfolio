@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DotEnv = require('dotenv-webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WebpackPwaManifestPlugin = require('webpack-pwa-manifest');
@@ -83,7 +82,7 @@ module.exports = {
       {
         test: /\.s?css$/i,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
     ],
   },
@@ -92,22 +91,14 @@ module.exports = {
       template: './public/index.html',
       filename: './index.html',
     }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, 'src', 'assets/images'),
-          to: 'assets/images',
-        },
-      ],
-    }),
     new MiniCssExtractPlugin({
-      filename: 'assets/[name].[contenthash].css',
+      filename: '[name].[contenthash].css',
     }),
     new DotEnv(),
     new CleanWebpackPlugin(),
     new WebpackPwaManifestPlugin({
-      name: 'CodeCasales | Portfolio',
-      short_name: 'CodeCasales 👻',
+      name: 'CodeCasales | Portfolio 👨🏽‍💻',
+      short_name: 'Code Casales 👨🏽‍💻',
       description: 'Portafolio personal, conoce a codecasales',
       background_color: '#215968',
       theme_color: '#215968',
@@ -130,6 +121,8 @@ module.exports = {
       ios: true,
     }),
     new GenerateSW({
+      exclude: [/index\.html$/],
+      maximumFileSizeToCacheInBytes: 1000 * 1000 * 5,
       runtimeCaching: [
         {
           urlPattern: /\.(png|jpg|jpeg|svg|pdf)$/,
@@ -143,14 +136,14 @@ module.exports = {
           },
         },
         {
-          urlPattern: /index\.html$/,
-          handler: 'StaleWhileRevalidate',
+          urlPattern: /^http:\/\/localhost:3006?\/?(index.html)$/i,
+          handler: 'NetworkFirst',
         },
         {
-          urlPattern: /(main|manifest)\..*\.(js|json)$/,
+          urlPattern: /(main|manifest)\..*\.(js|json|css)$/,
           handler: 'CacheFirst',
           options: {
-            cacheName: 'core',
+            cacheName: 'app-core',
             expiration: {
               maxEntries: 6,
               maxAgeSeconds: 60 * 60 * 24 * 5,
