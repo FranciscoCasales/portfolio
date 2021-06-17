@@ -25,6 +25,7 @@
       "@data/*": ["./src/assets/data/*"],
       "@constants/*": ["./src/constants/*"],
       "@context/*": ["./src/context/*"],
+      "@mocks/*": ["./src/__mocks__/*"],
     }
   }
 }

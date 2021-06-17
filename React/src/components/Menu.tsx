@@ -16,40 +16,37 @@ const Menu = ({ desktop = false, routeAction }: MenuModel): JSX.Element => {
   return (
     <ul className={`Menu ${desktop && 'desktop'}`}>
       <li className={Home ? 'isActive' : ''}>
-        <div
+        <button
+          className="Menu__route"
+          type="button"
           id="menu-home"
           onClick={handleRouting}
-          onKeyPress={handleRouting}
-          role="button"
-          tabIndex={0}
         >
           Hola
           <span />
-        </div>
+        </button>
       </li>
       <li className={Skills ? 'isActive' : ''}>
-        <div
+        <button
+          className="Menu__route"
+          type="button"
           id="menu-skills"
           onClick={handleRouting}
-          onKeyPress={handleRouting}
-          role="button"
-          tabIndex={0}
         >
           Habilidades
           <span />
-        </div>
+        </button>
       </li>
       <li className={Experience ? 'isActive' : ''}>
-        <div
+        <button
+          className="Menu__route"
+          type="button"
           id="menu-experience"
           onClick={handleRouting}
-          onKeyPress={handleRouting}
-          role="button"
-          tabIndex={0}
         >
           Experiencia
           <span />
-        </div>
+        </button>
       </li>
     </ul>
   );

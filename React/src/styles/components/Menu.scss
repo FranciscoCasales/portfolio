@@ -8,6 +8,7 @@
     position: relative;
     margin: 0.5rem 0;
     width: fit-content;
+    outline: none;
 
     span {
       transition: width 0.3s ease-out 0s;
@@ -87,4 +88,13 @@
       width: inherit;
     }
   }
+}
+
+.Menu__route {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  font-size: 1rem;
+  padding: 0;
+  outline: none;
 }

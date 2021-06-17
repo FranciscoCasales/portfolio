@@ -1,10 +1,9 @@
 import React from 'react';
 import '@styles/components/Header.scss';
-// import SideBar from '@components/SideBar';
 import Brand from '@components/Brand';
 import NavBar from '@components/NavBar';
 import useScreenSize from '@hooks/useScreenSize';
-import SideBar from './SideBar';
+import SideBar from '@components/SideBar';
 
 const Header = (): JSX.Element => {
   const [clientWidth, clientHeight] = useScreenSize();

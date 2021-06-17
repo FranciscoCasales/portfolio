@@ -11,22 +11,26 @@ const SocialNetwork = (): JSX.Element => (
       target="_blank"
       rel="noreferrer"
       className="SocialNetwork__github"
+      aria-label="github"
     />
     <a
       href="https://www.linkedin.com/in/jose-francisco-casales-huerta-170735176"
       target="_blank"
       rel="noreferrer"
       className="SocialNetwork__linkedin"
+      aria-label="linkedin"
     />
     <a
       href="mailto:jose.casales@outlook.com?subject=Portafolio"
       className="SocialNetwork__mail"
+      aria-label="email"
     />
     <a
       href={cv}
       target="_blank"
       rel="noreferrer"
       className="SocialNetwork__curriculum"
+      aria-label="curriculum"
     />
   </div>
 );

@@ -4,6 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DotEnv = require('dotenv-webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const WebpackPwaManifestPlugin = require('webpack-pwa-manifest');
+const { GenerateSW } = require('workbox-webpack-plugin');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -28,6 +30,9 @@ module.exports = {
       '@data': path.resolve(__dirname, 'src/assets/data'),
       '@constants': path.resolve(__dirname, 'src/constants'),
       '@context': path.resolve(__dirname, 'src/context'),
+      '@mocks': path.resolve(__dirname, 'src/__mocks__'),
+      'react-dom$': 'react-dom/profiling',
+      'scheduler/tracing': 'scheduler/tracing-profiling',
     },
   },
   module: {
@@ -54,7 +59,7 @@ module.exports = {
         test: /\.pdf$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/data/[hash][ext][query]',
+          filename: 'assets/data/[name].pdf',
         },
       },
       {
@@ -100,6 +105,54 @@ module.exports = {
     }),
     new DotEnv(),
     new CleanWebpackPlugin(),
+    new WebpackPwaManifestPlugin({
+      name: 'CodeCasales | Portfolio',
+      short_name: 'CodeCasales 👻',
+      description: 'Portafolio personal, conoce a codecasales',
+      background_color: '#215968',
+      theme_color: '#215968',
+      icons: [
+        {
+          src: path.resolve(
+            __dirname,
+            'src/assets/images/console-icon-pwa.svg'
+          ),
+          sizes: [96, 128, 192, 256, 384, 512],
+          purpose: 'maskable',
+        },
+        {
+          src: path.resolve(__dirname, 'src/assets/images/console-white.png'),
+          size: 512,
+        },
+      ],
+      start_url: '/',
+      publicPath: '/',
+      ios: true,
+    }),
+    new GenerateSW({
+      exclude: [/\.(png|jpg|jpeg|svg)$/],
+      runtimeCaching: [
+        {
+          urlPattern: /\.(png|jpg|jpeg|svg)$/,
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'images',
+            expiration: {
+              maxEntries: 70,
+              maxAgeSeconds: 60 * 60 * 24 * 7,
+            },
+          },
+        },
+        {
+          urlPattern: /index\.html$/,
+          handler: 'StaleWhileRevalidate',
+        },
+        {
+          urlPattern: /(main|manifest)\..*\.(js|json)$/,
+          handler: 'StaleWhileRevalidate',
+        },
+      ],
+    }),
   ],
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
