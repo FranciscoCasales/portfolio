@@ -6,16 +6,18 @@ import Header from '@components/Header';
 import SocialNetwork from '@components/SocialNetwork';
 import { Helmet } from 'react-helmet';
 import AppContext from '@context/AppContext';
-import { PAGE_TITLE } from '@constants/general.constants';
+import { PAGE_SUBTITLE, PAGE_TITLE } from '@constants/general.constants';
 
 const Layout = ({ children }: ChildrenModel): JSX.Element => {
   const { activeRoute } = useContext(AppContext);
   return (
     <div className="Layout default-theme">
       <Helmet>
-        <title>{`Portfolio ${PAGE_TITLE.get(
-          activeRoute || 'menu-home'
-        )}`}</title>
+        <title>{PAGE_TITLE.get(activeRoute || 'menu-home')}</title>
+        <meta
+          name="description"
+          content={PAGE_SUBTITLE.get(activeRoute || 'menu-home')}
+        />
       </Helmet>
       <Header />
       <SocialNetwork />

@@ -5,7 +5,19 @@ export enum PAGES {
 }
 
 export const PAGE_TITLE = new Map<string, string>([
-  ['menu-home', '🤟🏼 Hola'],
-  ['menu-skills', '💪🏽 Habilidades'],
-  ['menu-experience', '🤔 Experiencia laboral'],
+  ['menu-home', '🤟🏼 Portafolio | Hola'],
+  ['menu-skills', '💪🏽 Portafolio | Habilidades'],
+  ['menu-experience', '🧑🏽‍💻 Portafolio | Experiencia laboral'],
+]);
+
+export const PAGE_SUBTITLE = new Map<string, string>([
+  ['menu-home', 'Hola, soy Francisco Casales'],
+  [
+    'menu-skills',
+    'Aquí puedes encontrar un listado de mis habilidades, Francisco Casales.',
+  ],
+  [
+    'menu-experience',
+    'Aquí puedes encontrar un listado de mi experiencia laboral, Francisco Casales.',
+  ],
 ]);

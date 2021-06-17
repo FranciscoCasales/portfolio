@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import '@styles/components/SocialNetwork.scss';
-import cv from '@data/cv.pdf';
+import cv from '@data/CV_Ing_Jose_Francisco_Casales_Huerta.pdf';
 
 const SocialNetwork = (): JSX.Element => (
   <div className="SocialNetwork">

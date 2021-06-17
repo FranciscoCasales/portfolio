@@ -59,7 +59,7 @@ module.exports = {
         test: /\.pdf$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/data/[name].pdf',
+          filename: 'assets/data/[name].[contenthash].pdf',
         },
       },
       {
@@ -130,16 +130,15 @@ module.exports = {
       ios: true,
     }),
     new GenerateSW({
-      exclude: [/\.(png|jpg|jpeg|svg)$/],
       runtimeCaching: [
         {
-          urlPattern: /\.(png|jpg|jpeg|svg)$/,
+          urlPattern: /\.(png|jpg|jpeg|svg|pdf)$/,
           handler: 'CacheFirst',
           options: {
-            cacheName: 'images',
+            cacheName: 'assets-static',
             expiration: {
               maxEntries: 70,
-              maxAgeSeconds: 60 * 60 * 24 * 7,
+              maxAgeSeconds: 60 * 60 * 24 * 365,
             },
           },
         },
@@ -149,7 +148,14 @@ module.exports = {
         },
         {
           urlPattern: /(main|manifest)\..*\.(js|json)$/,
-          handler: 'StaleWhileRevalidate',
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'core',
+            expiration: {
+              maxEntries: 6,
+              maxAgeSeconds: 60 * 60 * 24 * 5,
+            },
+          },
         },
       ],
     }),

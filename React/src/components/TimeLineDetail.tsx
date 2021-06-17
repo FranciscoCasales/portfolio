@@ -9,8 +9,8 @@ const TimeLineDetail = ({
   right,
 }: TimeLineDetailModel): JSX.Element => (
   <div className={`TimeLineDetail ${right && 'right'}`}>
-    <h3>{job}</h3>
-    <p className="TimeLineDetail__company">{company}</p>
+    <h1>{job}</h1>
+    <h2 className="TimeLineDetail__company">{company}</h2>
     <p>{period}</p>
   </div>
 );
