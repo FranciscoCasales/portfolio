@@ -12,7 +12,6 @@ if ('serviceWorker' in navigator) {
       .register('/service-worker.js')
       .then((registration) => {
         registration.addEventListener('updatefound', (e) => {
-          alert('Se encontro una actualizacion v2');
           registration.update();
           window.location.reload();
         });
