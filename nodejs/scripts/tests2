@@ -1,0 +1,190 @@
+const testArr = [
+  [-1, 1, -1, 0, 0, 0],
+  [0, -1, 0, 0, 0, 0],
+  [-1, -1, -1, 0, 0, 0],
+  [-1, -9, -2, -4, -4, -5],
+  [-7, -3, -3, -2, -9, -9],
+  [-1, -3, -1, -2, -4, -5],
+];
+
+function hourglassSum(arr) {
+  // Write your code here
+  let response;
+  for (let j = 1; j < arr.length - 1; j++) {
+    const pastRow = arr[j - 1];
+    const currentRow = arr[j];
+    const nextRow = arr[j + 1];
+    for (let i = 1; i < currentRow.length - 1; i++) {
+      const tmpResponse =
+        sumArr(pastRow, i) + currentRow[i] + sumArr(nextRow, i);
+      response =
+        response === undefined || tmpResponse > response
+          ? tmpResponse
+          : response;
+    }
+  }
+  return response;
+}
+
+function sumArr(arr, i) {
+  return arr[i - 1] + arr[i] + arr[i + 1];
+}
+
+console.log(hourglassSum(testArr));
+
+const uTestArr = [1, 2, 3, 4, 5];
+
+function rotLeft(a, d) {
+  // Write your code here
+  for (let i = 0; i < d; i++) {
+    const firstIndex = a.shift();
+    a.push(firstIndex);
+    console.log(a);
+  }
+}
+
+rotLeft(uTestArr, 4);
+
+function minimumBribes(q) {
+  const queueLength = q.length;
+  let bribeCount = 0;
+  if (validateIfTooChaotic(q)) {
+    console.log('Too chaotic');
+    return;
+  }
+  do {
+    for (let i = 0; i < queueLength; i++) {
+      const greaterIndexValue = q[queueLength - i - 1];
+      const smallerIndexValue = q[queueLength - i - 2];
+      if (greaterIndexValue < smallerIndexValue) {
+        q[queueLength - i - 1] = smallerIndexValue;
+        q[queueLength - i - 2] = greaterIndexValue;
+        bribeCount++;
+      }
+    }
+  } while (isSorted(q));
+  console.log(bribeCount);
+}
+
+function isSorted(queue) {
+  for (let i = 0; i < queue.length; i++) {
+    if (i + 1 !== queue[i]) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function validateIfTooChaotic(queue) {
+  let result;
+  for (let i = 0; i < queue.length; i++) {
+    const distance = (i + 1 - queue[i]) * -1;
+    if (distance > 2) {
+      result = 'Too chaotic';
+      break;
+    }
+  }
+  return result;
+}
+
+minimumBribes([1, 2, 5, 3, 7, 8, 6, 4, 12, 9, 10, 11]);
+
+console.time();
+function diagonalDifference(arr) {
+  // Write your code here
+  let rightSum = 0;
+  let leftSum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    const internalArr = arr[i];
+    rightSum = rightSum + internalArr[i];
+    leftSum = leftSum + internalArr[internalArr.length - i - 1];
+  }
+  return Math.abs(rightSum - leftSum);
+}
+
+console.log(
+  diagonalDifference([
+    [1, 2, 3],
+    [4, 5, 6],
+    [9, 8, 9],
+  ])
+);
+
+function plusMinus(arr) {
+  // Write your code here
+  const arrLength = arr.length;
+  let positive = 0;
+  let negative = 0;
+  let zero = 0;
+  arr.forEach((element) =>
+    element > 0 ? positive++ : element < 0 ? negative++ : zero++
+  );
+  console.log(calculateRatio(positive, arrLength));
+  console.log(calculateRatio(negative, arrLength));
+  console.log(calculateRatio(zero, arrLength));
+}
+
+function calculateRatio(num, universe) {
+  return Math.abs(num > 0 ? num / universe : 0).toFixed(6);
+}
+
+plusMinus([1, 1, -1, -1]);
+
+function staircase(n) {
+  // Write your code here
+  const icon = '#';
+  const space = ' ';
+  for (let i = 0; i < n; i++) {
+    console.log(
+      `${getCharacters(space, n - i - 1)}${getCharacters(icon, i + 1)}`
+    );
+  }
+}
+
+function getCharacters(character, n) {
+  return n !== 0 ? character.repeat(n) : '';
+}
+
+staircase(10);
+
+var checkRecord = function (s) {
+  console.log();
+};
+
+checkRecord('PPLLPP');
+
+var networkDelayTime = function (times, to, from) {
+  let fromToDistance;
+  let result = 0;
+  do {
+    fromToDistance = Math.abs(to - from);
+    const stepBackward = from > to;
+    const timeToNextNode = times.find((time) => {
+      if (stepBackward && time[0] === from && time[1] === from - 1) {
+        return true;
+      } else if (time[0] === from && time[1] === from + 1) {
+        return true;
+      }
+    });
+    stepBackward ? from-- : from++;
+    º;
+    result =
+      timeToNextNode && timeToNextNode.length ? timeToNextNode[2] + result : -1;
+    if (result === -1) {
+      break;
+    }
+  } while (fromToDistance != 1);
+  return result;
+};
+
+console.log(
+  'result',
+  networkDelayTime(
+    [
+      [1, 2, 1],
+      [2, 1, 3],
+    ],
+    2,
+    2
+  )
+);

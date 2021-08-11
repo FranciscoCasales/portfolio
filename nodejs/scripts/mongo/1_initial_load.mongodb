@@ -1,0 +1,36 @@
+// Select the database to use.
+use('portfolio');
+
+// drop old data
+db.roles.drop();
+db.users.drop();
+
+// Insert new documents into the functions collection.
+const oidOwner = new ObjectId();
+const oidAdmin = new ObjectId();
+const oidPublic = new ObjectId();
+db.roles.insertMany([
+  { _id: oidOwner, 'name': 'owner', 'description': 'owner of portfolio', 'creationDate': new Date('2021-06-05T14:30:00Z') },
+  { _id: oidAdmin, 'name': 'admin', 'description': 'admin of portfolio', 'creationDate': new Date('2021-06-05T14:30:00Z') },
+  { _id: oidPublic, 'name': 'public', 'description': 'public user of portfolio', 'creationDate': new Date('2021-06-05T14:30:00Z') },
+]);
+
+db.functions.insertMany([
+  { 'name': 'create:users', 'desc': 'allow to create a user', 'creationDate': new Date('2021-06-05T14:30:00Z'), 'allowedRoles': [oidOwner] },
+  { 'name': 'update:users', 'desc': 'allow to update a user', 'creationDate': new Date('2021-06-05T14:30:00Z'), 'allowedRoles': [oidOwner, oidAdmin] },
+  { 'name': 'delete:users', 'desc': 'allow to delete a user', 'creationDate': new Date('2021-06-05T14:30:00Z'), 'allowedRoles': [oidOwner, oidAdmin] },
+  { 'name': 'approve:invitation', 'desc': 'allow to approve an invitation', 'creationDate': new Date('2021-06-05T14:30:00Z'), 'allowedRoles': [oidOwner] },
+  { 'name': 'reject:invitation', 'desc': 'allow to reject a invitation', 'creationDate': new Date('2021-06-05T14:30:00Z'), 'allowedRoles': [oidOwner] },
+  { 'name': 'create:comment', 'desc': 'allow to create a comment', 'creationDate': new Date('2021-06-05T14:30:00Z'), 'allowedRoles': [oidOwner, oidAdmin, oidPublic] },
+  { 'name': 'update:comment', 'desc': 'allow to update a comment', 'creationDate': new Date('2021-06-05T14:30:00Z'), 'allowedRoles': [oidOwner, oidAdmin] },
+])
+
+db.users.insertOne({
+  'username': 'jcasales',
+  'name': 'Francisco Casales',
+  'email': 'jose.casales@outlook.com',
+  'password': '$2b$10$u.ofyZwufke5UuIvz72.MOR2QX53mzSThAzGhZ12yFX2MsH4yQlWG',
+  'roles': [
+    { 'roleId': oidOwner, 'roleName': 'owner' }
+  ]
+})
