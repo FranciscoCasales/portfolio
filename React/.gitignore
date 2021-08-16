@@ -105,3 +105,6 @@ dist
 
 #jest
 coverage
+
+#ssr
+src/server/public

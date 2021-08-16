@@ -1,20 +1,14 @@
 {
   "extends": [
     "plugin:react/recommended",
-    "airbnb-typescript",
     "prettier",
-    "plugin:import/recommended",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
+    "eslint:recommended"
   ],
-  "settings": {
-    "import/resolver": {
-      "webpack": {
-        "config": "webpack.config.js"
-      }
-    }
+  "env": {
+    "browser": true,
+    "node": true
   },
-  "plugins": ["prettier", "@typescript-eslint"],
+  "plugins": ["prettier"],
   "rules": {
     "semi": "warn",
     "react/jsx-props-no-spreading": [
@@ -33,8 +27,6 @@
     ],
     "react/prop-types": 0,
     "no-underscore-dangle": 0,
-    "import/imports-first": ["error", "absolute-first"],
-    "import/newline-after-import": "error"
   },
   "globals": {
     "window": true,
@@ -45,10 +37,8 @@
     "Blob": true,
     "navigator": true
   },
-  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2020,
-    "sourceType": "module",
-    "project": "./tsconfig.eslint.json"
+    "sourceType": "module"
   }
 }

@@ -10,3 +10,5 @@ webpack.config.dev.js
 # don't lint custom typings
 custom.d.ts
 jest.config.ts
+
+server

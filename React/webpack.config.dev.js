@@ -1,38 +1,28 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const DotEnv = require('dotenv-webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WebpackPwaManifestPlugin = require('webpack-pwa-manifest');
 const { GenerateSW } = require('workbox-webpack-plugin');
+const webpack = require('webpack');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: [
+    './src/frontend/index.jsx',
+    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=2000&reload=true',
+  ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[contenthash].js',
-    assetModuleFilename: 'assets/images/[hash][ext][query]',
+    filename: 'app.js',
+    hashFunction: 'md5',
+    assetModuleFilename: 'assets/images/[contenthash][ext]',
   },
   mode: 'development',
   devtool: 'eval-source-map',
   resolve: {
-    extensions: ['.js', '.ts', '.tsx', '.svg', '.png', '.pdf'],
-    alias: {
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@containers': path.resolve(__dirname, 'src/containers'),
-      '@routes': path.resolve(__dirname, 'src/routes'),
-      '@styles': path.resolve(__dirname, 'src/styles'),
-      '@customTypes': path.resolve(__dirname, 'src/types'),
-      '@hooks': path.resolve(__dirname, 'src/hooks'),
-      '@models': path.resolve(__dirname, 'src/models'),
-      '@images': path.resolve(__dirname, 'src', 'assets/images'),
-      '@data': path.resolve(__dirname, 'src/assets/data'),
-      '@constants': path.resolve(__dirname, 'src/constants'),
-      '@context': path.resolve(__dirname, 'src/context'),
-      '@mocks': path.resolve(__dirname, 'src/__mocks__'),
-      'react-dom$': 'react-dom/profiling',
-      'scheduler/tracing': 'scheduler/tracing-profiling',
-    },
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg', '.png', '.pdf'],
+    modules: [path.resolve(__dirname, 'src'), './src', 'node_modules'],
   },
   module: {
     rules: [
@@ -44,13 +34,6 @@ module.exports = {
         },
       },
       {
-        test: /\.(ts|tsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'ts-loader',
-        },
-      },
-      {
         test: /\.(png|svg)/,
         type: 'asset/resource',
       },
@@ -58,7 +41,7 @@ module.exports = {
         test: /\.pdf$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/data/[name].[contenthash].pdf',
+          filename: 'assets/data/[name].[contenthash][ext]',
         },
       },
       {
@@ -76,10 +59,6 @@ module.exports = {
         },
       },
       {
-        test: /\.html$/,
-        use: [{ loader: 'html-loader' }],
-      },
-      {
         test: /\.s?css$/i,
         exclude: /node_modules/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
@@ -87,12 +66,17 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-      filename: './index.html',
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, './src/server/initialState.script.js'),
+          to: path.resolve(__dirname, './dist'),
+        },
+      ],
     }),
+    new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
+      filename: 'app.css',
     }),
     new DotEnv(),
     new CleanWebpackPlugin(),
@@ -106,13 +90,16 @@ module.exports = {
         {
           src: path.resolve(
             __dirname,
-            'src/assets/images/console-icon-pwa.svg'
+            'src/frontend/assets/images/console-icon-pwa.svg'
           ),
           sizes: [96, 128, 192, 256, 384, 512],
           purpose: 'maskable',
         },
         {
-          src: path.resolve(__dirname, 'src/assets/images/console-white.png'),
+          src: path.resolve(
+            __dirname,
+            'src/frontend/assets/images/console-white.png'
+          ),
           size: 512,
         },
       ],
