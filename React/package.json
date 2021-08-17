@@ -11,7 +11,8 @@
     "build:dev": "npx webpack --config webpack.config.dev.js",
     "format": "prettier --write '{*.js,src/**/*.{js,jsx,ts,tsx}}'",
     "lint": "eslint src/ --ext jsx,js,ts,tsx",
-    "start:dev": "NODE_PATH=./src nodemon --inspect ./src/server"
+    "start:dev": "NODE_PATH=./src nodemon --inspect ./src/server",
+    "start:prod": "NODE_PATH=./src pm2 ./src/server"
   },
   "keywords": [],
   "author": "",

@@ -73,6 +73,14 @@ module.exports = {
           from: path.resolve(__dirname, './src/server/initialState.script.js'),
           to: path.resolve(__dirname, './src/server/public'),
         },
+        {
+          from: path.resolve(__dirname, './robots.txt'),
+          to: path.resolve(__dirname, './src/server/public'),
+        },
+        {
+          from: path.resolve(__dirname, './sitemap.xml'),
+          to: path.resolve(__dirname, './src/server/public'),
+        },
       ],
     }),
     new MiniCssExtractPlugin({
@@ -81,10 +89,9 @@ module.exports = {
     new DotEnvWebpack(),
     new CleanWebpackPlugin(),
     new WebpackPwaManifestPlugin({
-      filename: `manifest.${new Date().getDate()}${new Date().getMonth()}${new Date().getFullYear()}.json`,
       name: 'CodeCasales | Portfolio 👨🏽‍💻',
       short_name: 'Code Casales 👨🏽‍💻',
-      description: 'Portafolio personal, conoce a codecasales',
+      description: 'Portafolio personal, conoce a jcasales',
       background_color: '#215968',
       theme_color: '#215968',
       icons: [
@@ -124,7 +131,7 @@ module.exports = {
           },
         },
         {
-          urlPattern: /^https:\/\/franciscocasales.github.io\/?(index\.html)?$/,
+          urlPattern: /^https:\/\/jcasales.xyz\/?(index\.html)?$/,
           handler: 'NetworkFirst',
         },
         {

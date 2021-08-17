@@ -52,8 +52,8 @@ const setResponse = (html) => {
   <!DOCTYPE html>
   <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Portfolio By Francisco Casales">
         <link rel="icon" href="${icon}">
@@ -75,20 +75,21 @@ const setResponse = (html) => {
         <div id="app">${html}</div>
         <script src="initialState.script.js" type="text/javascript"></script>
         <script src="${appJs}" type="text/javascript"></script>
-        <script src="${vendorBuild}" type="text/javascript"></script>
+        <script defer src="${vendorBuild}" type="text/javascript"></script>
     </body>
   </html>
   `;
 };
 
 const renderApp = (req, res) => {
-  console.log('render app');
   const html = renderToString(
     <StaticRouter location={req.url} context={{}}>
       {renderRoutes(serverRoutes)}
     </StaticRouter>
   );
+
   res.set('Cache-control', 'private, max-age=300');
+  res.set('Content-Type', 'text/html; charset=utf-8');
   res.send(setResponse(html));
 };
 
