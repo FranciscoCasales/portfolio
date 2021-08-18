@@ -3,51 +3,63 @@ pipeline {
   agent any
 
   tools {
-    nodejs 'node-14.17.0'
+    nodejs "node-14.17.5"
   }
 
   options {
-    timeout(time: 10, unit: 'MINUTES')
+    timeout(time: 15, unit: "MINUTES")
   }
-  parameters {
-    string(name: 'VERSION', defaultValue: '1.0.0', description: 'Deploy version')
+  
+  environment {
+    LOCAL_HOME = "${PORTFOLIO_HOME}"
+    CREDENTIALS = "${SERVER_CREDENTIALS}"
+    USER = "${SERVER_USER}"
+    HOST = "${SERVER_HOST}"
+    SERVER_HOME = "${SERVER_HOME}"
+    DEPLOY_DIR = "${DEPLOY_DIR}"
   }
+
   stages {
     
-    stage('Install dependencies') {
+    stage("Install dependencies") {
       steps {
-        sh 'cd React && npm i'
+        sh "cd $LOCAL_HOME/React && npm i"
       }
     }
-    stage('Build project') {
+    stage("Build project") {
       steps {
-        sh 'cd React && npm run build'
-      }
-    }
-
-    stage('Clone the github pages project and update content') {
-      steps {
-        sh 'git clone https://github.com/FranciscoCasales/FranciscoCasales.github.io.git'
-        sh 'rm -rf FranciscoCasales.github.io/*'
-        sh 'cp -R React/dist/* FranciscoCasales.github.io/'
+        sh "cd $LOCAL_HOME/React && npm run build"
       }
     }
 
-    stage('Deploy portafolio in github pages') {
-      environment {
-        GITHUB_TOKEN = credentials('p-github')
-        GITHUB_USER = 'FranciscoCasales'
-      }
+    stage("Build prod dist folder") {
       steps {
-        sh 'cd FranciscoCasales.github.io/ && git add .'
-        sh "cd FranciscoCasales.github.io/ && git commit -m \"[DEPLOY :rocket: ]: New portfolio version ${params.VERSION}\""
-        sh 'cd FranciscoCasales.github.io/ && git push https://$GITHUB_USER:$GITHUB_TOKEN@github.com/FranciscoCasales/FranciscoCasales.github.io.git'
+        sh "rm -rf $LOCAL_HOME/$DEPLOY_DIR"
+        sh "cd $LOCAL_HOME && mkdir $DEPLOY_DIR"
+        sh "cd $LOCAL_HOME/React && cp -r src/ ../$DEPLOY_DIR/src"
+        sh "cd $LOCAL_HOME/React && cp ./package.json ../$DEPLOY_DIR"
+        sh "cd $LOCAL_HOME/React && cp ./package-lock.json ../$DEPLOY_DIR"
+        sh "bash $LOCAL_HOME/envGenerator.sh"
+      }
+    }
+    
+    stage("Build zip and send to server") {
+      steps {
+        sh "rm -rf $LOCAL_HOME/${DEPLOY_DIR}.zip"
+        sh "cd $LOCAL_HOME && zip -r ${DEPLOY_DIR}.zip $DEPLOY_DIR/"
+        sh "ssh -i $CREDENTIALS $USER@$HOST rm -rf $SERVER_HOME/${DEPLOY_DIR}.zip"
+        sh "scp -i $CREDENTIALS $LOCAL_HOME/${DEPLOY_DIR}.zip $USER@$HOST:~/"
       }
     }
 
-    stage('Clean workspace') {
+    stage("Deploy to server") {
       steps {
-        cleanWs()
+        sh "ssh -i $CREDENTIALS $USER@$HOST rm -rf $SERVER_HOME/$DEPLOY_DIR"
+        sh "ssh -i $CREDENTIALS $USER@$HOST unzip $SERVER_HOME/${DEPLOY_DIR}.zip"
+        sh "ssh -i $CREDENTIALS $USER@$HOST 'cd $SERVER_HOME/$DEPLOY_DIR && npm i'"
+        sh "ssh -i $CREDENTIALS $USER@$HOST $SERVER_HOME/.nvm/versions/node/v14.17.5/bin/pm2 stop all"
+        sh "ssh -i $CREDENTIALS $USER@$HOST npm run start:prod --prefix $SERVER_HOME/$DEPLOY_DIR"
+        sh "ssh -i $CREDENTIALS $USER@$HOST rm -rf $SERVER_HOME/${DEPLOY_DIR}.zip"
       }
     }
   }

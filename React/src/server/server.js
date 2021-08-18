@@ -35,8 +35,10 @@ if (ENV === 'development') {
 }
 
 const setResponse = (html) => {
-  const hashManifest = getFileName();
-  const appCss = hashManifest ? hashManifest['vendors.css'] : 'app.css';
+  const hashManifest = getFileName(ENV === 'development');
+  const appCss = hashManifest
+    ? hashManifest['vendors.css'] || hashManifest['main.css']
+    : 'app.css';
   const vendorBuild = hashManifest ? hashManifest['vendors.js'] : 'vendor.js';
   const appJs = hashManifest ? hashManifest['main.js'] : 'app.js';
   const manifestFileName = hashManifest?.manifestFileName;

@@ -6,6 +6,7 @@ const WebpackPwaManifestPlugin = require('webpack-pwa-manifest');
 const { GenerateSW } = require('workbox-webpack-plugin');
 const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
+const WebpackManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   entry: [
@@ -72,6 +73,14 @@ module.exports = {
           from: path.resolve(__dirname, './src/server/initialState.script.js'),
           to: path.resolve(__dirname, './dist'),
         },
+        {
+          from: path.resolve(__dirname, './robots.txt'),
+          to: path.resolve(__dirname, './dist'),
+        },
+        {
+          from: path.resolve(__dirname, './sitemap.xml'),
+          to: path.resolve(__dirname, './dist'),
+        },
       ],
     }),
     new webpack.HotModuleReplacementPlugin(),
@@ -79,7 +88,6 @@ module.exports = {
       filename: 'app.css',
     }),
     new DotEnv(),
-    new CleanWebpackPlugin(),
     new WebpackPwaManifestPlugin({
       name: 'CodeCasales | Portfolio 👨🏽‍💻',
       short_name: 'Code Casales 👨🏽‍💻',
@@ -139,10 +147,10 @@ module.exports = {
         },
       ],
     }),
+    new WebpackManifestPlugin.WebpackManifestPlugin({
+      fileName: 'file-names.json',
+      basePath: '',
+      publicPath: '',
+    }),
   ],
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 3006,
-  },
 };

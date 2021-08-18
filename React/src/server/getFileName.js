@@ -10,19 +10,22 @@ const findManifest = (dirname) => {
     const regexResult = file.match(/manifest\.\w+\.json/i);
     if (regexResult && regexResult[0]) {
       return [
-        JSON.parse(fs.readFileSync(`${__dirname}/public/${regexResult[0]}`)),
+        JSON.parse(fs.readFileSync(`${dirname}/${regexResult[0]}`)),
         regexResult[0],
       ];
     }
   }
 };
 
-const getFileName = () => {
+const getFileName = (isDev) => {
   try {
+    const path = isDev
+      ? `${__dirname.replace('/src/server', '')}/dist`
+      : `${__dirname}/public`;
     const fileNamesJson = JSON.parse(
-      fs.readFileSync(`${__dirname}/public/file-names.json`)
+      fs.readFileSync(`${path}/file-names.json`)
     );
-    const manifest = findManifest(`${__dirname}/public/`);
+    const manifest = findManifest(`${path}/`);
     const maskIcon = manifest[0].icons.find(
       (icon) => icon.sizes === '512x512' && icon.purpose === 'maskable'
     );

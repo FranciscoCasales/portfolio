@@ -1,4 +1,11 @@
 .SkillList {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  opacity: 0;
+  transition: opacity ease 1s;
+
+  &.intersected {
+    opacity: 1;
+  }
+
 }

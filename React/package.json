@@ -12,7 +12,7 @@
     "format": "prettier --write '{*.js,src/**/*.{js,jsx,ts,tsx}}'",
     "lint": "eslint src/ --ext jsx,js,ts,tsx",
     "start:dev": "NODE_PATH=./src nodemon --inspect ./src/server",
-    "start:prod": "NODE_PATH=./src pm2 ./src/server"
+    "start:prod": "NODE_PATH=./src /home/ubuntu/.nvm/versions/node/v14.17.5/bin/pm2 start ./src/server --cron-restart='0 0 0 1 * *'"
   },
   "keywords": [],
   "author": "",

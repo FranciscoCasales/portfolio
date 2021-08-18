@@ -8,12 +8,10 @@
   color: var(--time-line-text);
   padding: 0.5rem;
   opacity: 0;
-  filter: blur(10px);
-  transition: filter ease 1s, opacity ease 1s;
+  transition: opacity ease 1s;
 
   &.intersected {
     opacity: 1;
-    filter: blur(0);
   }
 
   p {
